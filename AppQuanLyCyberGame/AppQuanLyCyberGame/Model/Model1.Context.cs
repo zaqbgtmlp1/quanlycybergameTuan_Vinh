@@ -13,10 +13,10 @@ namespace AppQuanLyCyberGame.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class QuanLyCyberGameEntities4 : DbContext
+    public partial class QuanLyCyberGameEntities : DbContext
     {
-        public QuanLyCyberGameEntities4()
-            : base("name=QuanLyCyberGameEntities4")
+        public QuanLyCyberGameEntities()
+            : base("name=QuanLyCyberGameEntities")
         {
         }
     

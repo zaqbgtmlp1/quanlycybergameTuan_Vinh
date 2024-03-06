@@ -24,6 +24,7 @@ namespace AppQuanLyCyberGame.Model
         public Nullable<double> Total { get; set; }
         public Nullable<int> IdUser { get; set; }
         public string BillStatus { get; set; }
+        public Nullable<System.DateTime> orderat { get; set; }
     
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

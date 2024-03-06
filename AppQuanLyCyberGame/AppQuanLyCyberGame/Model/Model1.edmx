@@ -13,6 +13,7 @@
           <Property Name="Total" Type="float" />
           <Property Name="IdUser" Type="int" />
           <Property Name="BillStatus" Type="nvarchar(max)" />
+          <Property Name="orderat" Type="datetime" />
         </EntityType>
         <EntityType Name="BillDetail">
           <Key>
@@ -209,6 +210,7 @@
           <Property Name="Total" Type="Double" />
           <Property Name="IdUser" Type="Int32" />
           <Property Name="BillStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="orderat" Type="DateTime" Precision="3" />
           <NavigationProperty Name="User" Relationship="Self.FK__Bill__IdUser__173876EA" FromRole="Bill" ToRole="Users" />
           <NavigationProperty Name="BillDetails" Relationship="Self.FK__BillDetai__BillI__3E52440B" FromRole="Bill" ToRole="BillDetail" />
         </EntityType>
@@ -369,7 +371,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="QuanLyCyberGameEntities4" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="QuanLyCyberGameEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Bills" EntityType="Self.Bill" />
           <EntitySet Name="BillDetails" EntityType="Self.BillDetail" />
           <EntitySet Name="Chats" EntityType="Self.Chat" />
@@ -409,7 +411,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="QuanLyCyberGameModelStoreContainer" CdmEntityContainer="QuanLyCyberGameEntities4">
+        <EntityContainerMapping StorageEntityContainer="QuanLyCyberGameModelStoreContainer" CdmEntityContainer="QuanLyCyberGameEntities">
           <EntitySetMapping Name="Bills">
             <EntityTypeMapping TypeName="QuanLyCyberGameModel.Bill">
               <MappingFragment StoreEntitySet="Bill">
@@ -417,6 +419,7 @@
                 <ScalarProperty Name="Total" ColumnName="Total" />
                 <ScalarProperty Name="IdUser" ColumnName="IdUser" />
                 <ScalarProperty Name="BillStatus" ColumnName="BillStatus" />
+                <ScalarProperty Name="orderat" ColumnName="orderat" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

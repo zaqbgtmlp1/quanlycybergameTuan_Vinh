@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:AppQuanLyCyberGame"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        DataContext="{StaticResource DUVM}"
         Title="ProfileUser" Height="550" Width="1000">
 
     <Border BorderThickness="1" BorderBrush="#FF807D7D" CornerRadius="10">
@@ -15,7 +16,7 @@
                 <RowDefinition Height="60"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" FontSize="30" FontWeight="Bold" Text="Đặt Phòng" Margin="0 12 0 0"
+            <TextBlock Grid.Row="0" FontSize="30" FontWeight="Bold" Text="Thông tin người dùng" Margin="0 12 0 0"
                    Foreground="#00A3FF" VerticalAlignment="Top" HorizontalAlignment="Center"/>
             <Grid Grid.Row="1">
                 <Grid  Width="900" Height="420" Background="#F2F1F1"
@@ -33,17 +34,23 @@
                    Foreground="#00A3FF" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                         <Grid Height="25" Width="213" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="65 25 0 0">
                             <materialDesign:PackIcon Kind="AccountBox" Height="25" Width="25"/>
-                            <TextBox x:Name="txbHoTen" Margin="30 0 0 0" materialDesign:HintAssist.Hint="Nhập họ tên khách hàng"/>
+                            <TextBox x:Name="txbHoTen" Margin="30 0 0 0" materialDesign:HintAssist.Hint="Nhập họ tên khách hàng"
+                                     Text="{Binding SelectedUser.DisplayName, Mode=OneWay}"
+                                     />
                         </Grid>
 
                         <Grid Height="25" Width="213" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="65 27 0 0">
                             <materialDesign:PackIcon Kind="CardAccountDetailsOutline" Height="25" Width="25"/>
-                            <TextBox x:Name="txbCCCD" MaxLength="12" Margin="30 0 0 0" materialDesign:HintAssist.Hint="Nhập CCCD"/>
+                            <TextBox x:Name="txbCCCD" MaxLength="12" Margin="30 0 0 0" materialDesign:HintAssist.Hint="Nhập CCCD"
+                                     Text="{Binding SelectedUser.CCCD, Mode=OneWay}"
+                                     />
                         </Grid>
 
                         <Grid Height="25" Width="213" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="65 27 0 0">
                             <materialDesign:PackIcon Kind="Phone" Height="25" Width="25"/>
-                            <TextBox x:Name="txbSDT" Margin="30 0 0 0" MaxLength="10" materialDesign:HintAssist.Hint="Nhập SDT"/>
+                            <TextBox x:Name="txbSDT" Margin="30 0 0 0" MaxLength="10" materialDesign:HintAssist.Hint="Nhập SDT"
+                                     Text="{Binding SelectedUser.Phonenumber, Mode=OneWay}"
+                                     />
                         </Grid>
 
                         <Grid Height="25" Width="213" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="65 27 0 0">
@@ -77,12 +84,14 @@
                         Foreground="#00A3FF" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                         <Grid Height="25" Width="213" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="65 100 0 0">
                             <materialDesign:PackIcon Kind="AccountBox" Height="25" Width="25"/>
-                            <TextBox x:Name="txbTaiKhoan" Margin="30 0 0 0" materialDesign:HintAssist.Hint="Tài khoản"/>
+                            <TextBox x:Name="txbTaiKhoan" Margin="30 0 0 0" materialDesign:HintAssist.Hint="Tài khoản"
+                                     Text="{Binding SelectedUser.UserName, Mode=OneWay}"/>
                         </Grid>
 
                         <Grid Height="25" Width="213" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="65 160 0 0">
                             <materialDesign:PackIcon Kind="AccountBox" Height="25" Width="25"/>
-                            <TextBox x:Name="txbMatKhau" Margin="30 0 0 0" materialDesign:HintAssist.Hint="Mật khẩu"/>
+                            <TextBox x:Name="txbMatKhau" Margin="30 0 0 0" materialDesign:HintAssist.Hint="Mật khẩu"
+                                     Text="{Binding SelectedUser.Password, Mode=OneWay}"/>
                         </Grid>
 
 
@@ -104,13 +113,13 @@
 
                 </Grid>
                 <Button Width="90" Height="36" Background="#478C10" Content="Lưu"
-                        HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,212,60" Click="click_Luu">
+                        HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,212,60" >
                     <Button.Clip>
                         <RectangleGeometry Rect="0,0,89,36" RadiusX="10" RadiusY="10"/>
                     </Button.Clip>
                 </Button>
                 <Button Width="89" Height="36" Background="#9D9999" Content="Hủy"
-                        HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,80,60"  Click="click_Huy">
+                        HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,80,60">
                     <Button.Clip>
                         <RectangleGeometry Rect="0,0,89,36" RadiusX="10" RadiusY="10"/>
                     </Button.Clip>

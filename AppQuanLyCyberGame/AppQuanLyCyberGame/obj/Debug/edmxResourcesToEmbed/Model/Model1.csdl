@@ -8,6 +8,7 @@
     <Property Name="Total" Type="Double" />
     <Property Name="IdUser" Type="Int32" />
     <Property Name="BillStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="orderat" Type="DateTime" Precision="3" />
     <NavigationProperty Name="User" Relationship="Self.FK__Bill__IdUser__173876EA" FromRole="Bill" ToRole="Users" />
     <NavigationProperty Name="BillDetails" Relationship="Self.FK__BillDetai__BillI__3E52440B" FromRole="Bill" ToRole="BillDetail" />
   </EntityType>
@@ -168,7 +169,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="QuanLyCyberGameEntities4" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="QuanLyCyberGameEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Bills" EntityType="Self.Bill" />
     <EntitySet Name="BillDetails" EntityType="Self.BillDetail" />
     <EntitySet Name="Chats" EntityType="Self.Chat" />

@@ -8,6 +8,7 @@
     <Property Name="Total" Type="float" />
     <Property Name="IdUser" Type="int" />
     <Property Name="BillStatus" Type="nvarchar(max)" />
+    <Property Name="orderat" Type="datetime" />
   </EntityType>
   <EntityType Name="BillDetail">
     <Key>

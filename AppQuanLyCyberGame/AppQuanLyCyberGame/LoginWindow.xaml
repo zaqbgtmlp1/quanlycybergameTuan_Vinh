@@ -10,6 +10,9 @@
     
        
         WindowStartupLocation="CenterScreen"
+        
+        DataContext="{StaticResource LoginVM}"
+        
         Title="LoginWindow" Height="300" Width="400">
     <Grid>
         <Grid.RowDefinitions>

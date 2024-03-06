@@ -1,6 +1,7 @@
 ﻿using AppQuanLyCyberGame.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,36 +11,46 @@ namespace AppQuanLyCyberGame.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {
-        // mọi thứ xử lý sẽ nằm trong này
 
-        public bool Isloaded = false;
-        public MainViewModel()
+        private ObservableCollection<User> _users;
+
+        public ObservableCollection<User> Users
         {
-            if(!Isloaded)
+            get { return _users; }
+            set
             {
-                Isloaded = true;
-                LoginWindow loginWindow = new LoginWindow();
-                LoadClientComputer();
-                loginWindow.ShowDialog();
+                _users = value;
+                OnPropertyChanged();
             }
-
-            ClientComputer cl1 = new ClientComputer()
-            {
-                Id = 3,
-                CCStatus = false,
-                CCType = 1,
-            };
-
-
-
-
-
         }
 
-        void LoadClientComputer()
+        private ObservableCollection<ClientComputer> _Client;
+
+        public ObservableCollection<ClientComputer> Clients
         {
-            var Client1 = DataProvider.Ins.DB.Users;
+            get { return _Client; }
+            set
+            {
+                _Client = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public MainViewModel()
+        {
+            LoadData();
+        }
+
+        private void LoadData()
+        {
+
+            var dataProvider = DataProvider.Ins;
+            var ccFromDatabase = dataProvider.GetClientComputer();
+            // Gán dữ liệu vào ObservableCollection
+            Clients = new ObservableCollection<ClientComputer>(ccFromDatabase);
+
 
         }
     }
+
 }

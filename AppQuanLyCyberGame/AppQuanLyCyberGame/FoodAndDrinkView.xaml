@@ -6,7 +6,10 @@
         xmlns:local="clr-namespace:AppQuanLyCyberGame"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Window1" Height="450" Width="800">
+        DataContext="{StaticResource ItemVM}"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        Title="Food And Drink" Height="450" Width="800">
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
@@ -98,7 +101,44 @@
             </Grid>
 
             <!--main-->
+            <!--main-->
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- TextBox để nhập tên sản phẩm cần lọc -->
+                <TextBox Grid.Row="0" Margin="5" Width="200" Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}" />
+
+                
+
+                <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+                    <ItemsControl ItemsSource="{Binding Items}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="4" HorizontalAlignment="Left" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <!-- Đoạn mã hiển thị sản phẩm tương tự như trước -->
+                                <Border BorderBrush="Black" BorderThickness="1" Margin="5" Padding="5" Width="180" Height="180" MouseLeftButtonDown="OnBorderClicked" MouseEnter="OnMouseEnter" MouseLeave="OnMouseLeave">
+                                    <StackPanel>
+                                        <Image Source="F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\Image\1.jpg" Width="100" Height="100" />
+                                        <TextBlock Text="{Binding DisplayName}" Margin="5,0,0,0" FontWeight="Bold" />
+                                        <TextBlock Text="{Binding Cost, StringFormat='Price: {0:C}'}" Margin="5,0,0,0" />
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+
+            </Grid>
+
         </Grid>
-    </Grid>
+     </Grid>
 
 </Window>

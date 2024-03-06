@@ -8,6 +8,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         DataContext="{StaticResource MainVM}"
         Title="MainWindow" Height="450" Width="800">
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
@@ -109,7 +110,7 @@
 
 
                 <!--list-->
-                <materialDesign:Card Grid.Row="0" Margin="5" VerticalAlignment="Stretch">
+                <materialDesign:Card Grid.Row="1" Margin="5" VerticalAlignment="Stretch">
                     <Grid >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"></RowDefinition>
@@ -142,11 +143,55 @@
                             <Separator></Separator>
                         </Grid>
                         <Grid Grid.Row="2">
-                            <ListView ItemsSource="{Binding data}">
+                            <ListView ItemsSource="{Binding Clients}">
                                 <ListView.View>
                                     <GridView>
-                                        <GridViewColumn Header="Tên máy" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
-                                        <GridViewColumn Header="Tình trạng" DisplayMemberBinding="{Binding CCStatus}"></GridViewColumn>
+                                        <GridViewColumn Header="Id Máy" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
+                                        <GridViewColumn Header="Tình trạng máy">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock>
+                                                        <TextBlock.Style>
+                                                            <Style TargetType="TextBlock">
+                                                                <Setter Property="Text" Value="{Binding CCStatus}" />
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Binding="{Binding CCStatus}" Value="False">
+                                                                        <Setter Property="Text" Value="Đang tắt" />
+                                                                    </DataTrigger>
+                                                                    <DataTrigger Binding="{Binding CCStatus}" Value="True">
+                                                                        <Setter Property="Text" Value="Đang hoạt động" />
+                                                                    </DataTrigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </TextBlock.Style>
+                                                    </TextBlock>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn Header="Loại máy">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock>
+                                                        <TextBlock.Style>
+                                                            <Style TargetType="TextBlock">
+                                                                <Setter Property="Text" Value="{Binding CCType}" />
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Binding="{Binding CCType}" Value="1">
+                                                                        <Setter Property="Text" Value="Vip" />
+                                                                    </DataTrigger>
+                                                                    <DataTrigger Binding="{Binding CCType}" Value="2">
+                                                                        <Setter Property="Text" Value="Vip 1" />
+                                                                    </DataTrigger>
+                                                                    <DataTrigger Binding="{Binding CCType}" Value="3">
+                                                                        <Setter Property="Text" Value="Vip 2" />
+                                                                    </DataTrigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </TextBlock.Style>
+                                                    </TextBlock>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
                                     </GridView>
                                 </ListView.View>
                             </ListView>
@@ -157,5 +202,6 @@
             </Grid>
         </Grid>
     </Grid>
+
 
 </Window>

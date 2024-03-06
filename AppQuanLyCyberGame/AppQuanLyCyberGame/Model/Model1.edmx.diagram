@@ -4,16 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f60fcdf738464672b1095f86e9923920" Name="Diagram1">
-        <EntityTypeShape EntityType="QuanLyCyberGameModel.Bill" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyCyberGameModel.BillDetail" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyCyberGameModel.Chat" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+      <Diagram DiagramId="dfe2ee5feaba4783af2d6f9249e5f0fa" Name="Diagram1">
+        <EntityTypeShape EntityType="QuanLyCyberGameModel.Bill" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCyberGameModel.BillDetail" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCyberGameModel.Chat" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
         <EntityTypeShape EntityType="QuanLyCyberGameModel.ClientComputer" Width="1.5" PointX="10" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="QuanLyCyberGameModel.ClientComputerType" Width="1.5" PointX="7.75" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyCyberGameModel.Item" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCyberGameModel.Item" Width="1.5" PointX="5.25" PointY="7.125" IsExpanded="true" />
         <EntityTypeShape EntityType="QuanLyCyberGameModel.sysdiagram" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyCyberGameModel.UserRole" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyCyberGameModel.User" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCyberGameModel.UserRole" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCyberGameModel.User" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
         <AssociationConnector Association="QuanLyCyberGameModel.FK__Bill__IdUser__173876EA" ManuallyRouted="false" />
         <AssociationConnector Association="QuanLyCyberGameModel.FK__BillDetai__BillI__3E52440B" ManuallyRouted="false" />
         <AssociationConnector Association="QuanLyCyberGameModel.FK__BillDetai__ItemI__3F466844" ManuallyRouted="false" />
