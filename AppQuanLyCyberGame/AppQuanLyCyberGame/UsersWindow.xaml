@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         DataContext="{StaticResource UsersVM}"
+        WindowStartupLocation="CenterOwner"
         Title="MainWindow" Height="450" Width="800">
 
     <Grid>
@@ -23,81 +24,8 @@
             </Grid.RowDefinitions>
 
             <!--menu-->
-            <Grid Grid.Row="0">
-                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Background="Transparent">
-                    <Grid.Resources>
-                        <Style TargetType="Button">
-                            <Setter Property="Margin" Value="2 4 2 4"></Setter>
-                            <Setter Property="Background" Value="LightCyan"></Setter>
-                        </Style>
-                    </Grid.Resources>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Button Command="{Binding ObjectCommand}" ToolTip="Quản lý máy trạm" Grid.ColumnSpan="2" Margin="-2,4,30,4" Width="200">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <Grid Grid.Row="0">
-                                <TextBlock Text="Quản lý máy trạm" HorizontalAlignment="Center"></TextBlock>
-                            </Grid>
-                            <Grid Grid.Row="1">
-                                <materialDesign:PackIcon Width="24" Height="24"  HorizontalAlignment="Center"  Kind="DesktopClassic" />
-                            </Grid>
-                        </Grid>
-                    </Button>
-                    <Button Grid.Column="1" Command="{Binding UnitCommand}" ToolTip="Thức ăn/Nước uống" Grid.ColumnSpan="3" Margin="83,4,57,4" Width="200">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <Grid Grid.Row="0">
-                                <TextBlock HorizontalAlignment="Center" Margin="0,1,0,-1"><Run Text="Thức ăn/ Nước uống"/><LineBreak/><Run/></TextBlock>
-                            </Grid>
-                            <Grid Grid.Row="1">
-                                <materialDesign:PackIcon Width="24" Height="24"  HorizontalAlignment="Center"  Kind="FoodForkDrink" Margin="43,-15,43,0" />
-                            </Grid>
-                        </Grid>
-                    </Button>
-                    <Button Grid.Column="3" Command="{Binding CustomerCommand}" ToolTip="Nhân viên" Grid.ColumnSpan="3" Margin="55,4,85,4" Width="200">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <Grid Grid.Row="0">
-                                <TextBlock Text="Nhân viên" HorizontalAlignment="Center"></TextBlock>
-                            </Grid>
-                            <Grid Grid.Row="1">
-                                <materialDesign:PackIcon Width="24" Height="24"  HorizontalAlignment="Center"  Kind="HumanHandsup" />
-                            </Grid>
-                        </Grid>
-                    </Button>
-                    <Button Grid.Column="5" Command="{Binding UserCommand}" ToolTip="Khách hàng" Grid.ColumnSpan="2" Margin="28,4,-0.5,4" Width="200">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <Grid Grid.Row="0">
-                                <TextBlock Text="Khách hàng" HorizontalAlignment="Center"></TextBlock>
-                            </Grid>
-                            <Grid Grid.Row="1">
-                                <materialDesign:PackIcon Width="24" Height="24"  HorizontalAlignment="Center"  Kind="AccountMultiple" />
-                            </Grid>
-                        </Grid>
-                    </Button>
-                </Grid>
-            </Grid>
+            <local:MainUserControl Grid.Row="0"/>
+
 
             <!--main-->
             <Grid Grid.Row="1">

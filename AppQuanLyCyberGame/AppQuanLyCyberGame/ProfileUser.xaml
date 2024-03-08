@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         DataContext="{StaticResource DUVM}"
+        WindowStartupLocation="CenterOwner"
         Title="ProfileUser" Height="550" Width="1000">
 
     <Border BorderThickness="1" BorderBrush="#FF807D7D" CornerRadius="10">

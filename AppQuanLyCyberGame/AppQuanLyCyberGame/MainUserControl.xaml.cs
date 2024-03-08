@@ -1,5 +1,4 @@
-﻿using AppQuanLyCyberGame.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,21 +16,13 @@ using System.Windows.Shapes;
 namespace AppQuanLyCyberGame
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainUserControl.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainUserControl : UserControl
     {
-        public MainWindow()
+        public MainUserControl()
         {
             InitializeComponent();
-            Loaded += MainWindow_Loaded;
-        }
-
-        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
-        {
-            WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            this.WindowState = WindowState.Normal;
-            this.WindowStyle = WindowStyle.SingleBorderWindow;
         }
     }
 }

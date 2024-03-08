@@ -7,4 +7,5 @@
     <viewmodel:ItemViewModel x:Key="ItemVM"></viewmodel:ItemViewModel>
     <viewmodel:StatisticsViewModel x:Key="SVM"></viewmodel:StatisticsViewModel>
     <viewmodel:DashBoardStatisticsViewModel x:Key="DBSVM"></viewmodel:DashBoardStatisticsViewModel>
+    <viewmodel:UserControlViewModel x:Key="UCVM"></viewmodel:UserControlViewModel>
 </ResourceDictionary>

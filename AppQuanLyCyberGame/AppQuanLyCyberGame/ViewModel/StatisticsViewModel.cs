@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace AppQuanLyCyberGame.ViewModel
@@ -78,7 +79,9 @@ namespace AppQuanLyCyberGame.ViewModel
 
             // Gán dữ liệu đã lọc vào ObservableCollection
             Bills = new ObservableCollection<Bill>(filteredData);
-            
+
+            TotalAmount = Convert.ToDecimal(Bills.Sum(b => b.Total));
+
 
         }
         private void LoadData()
@@ -123,8 +126,8 @@ namespace AppQuanLyCyberGame.ViewModel
         private void NavigateToDashboard()
         {
             var dashboardView = new DashboardWindow();
-            dashboardView.Show();
-            
+            dashboardView.ShowDialog();
+
         }
         private decimal _totalAmount;
 
@@ -139,6 +142,39 @@ namespace AppQuanLyCyberGame.ViewModel
                     OnPropertyChanged();
                 }
             }
+        }
+
+
+        private RelayCommand<object> _itemCommand;
+
+        public ICommand ItemCommand
+        {
+            get
+            {
+                if (_itemCommand == null)
+                {
+                    _itemCommand = new RelayCommand<object>(
+                        p => true, // Bạn có thể thay đổi điều kiện kiểm tra có thể thực hiện lệnh hay không
+                        p => NavigateToItemWindow()
+                    );
+                }
+                return _itemCommand;
+            }
+        }
+
+        private void NavigateToItemWindow()
+        {
+            var itemWindow = new FoodAndDrinkView();
+            CloseCurrentView();
+            itemWindow.ShowDialog();
+
+        }
+
+        private void CloseCurrentView()
+        {
+            // Lấy window hiện tại và đóng nó
+            Window currentWindow = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
+            currentWindow?.Close();
         }
 
     }

@@ -37,7 +37,7 @@ namespace AppQuanLyCyberGame
                 ItemDetailViewModel itemDetailViewModel = new ItemDetailViewModel(selectedItem);
                 ItemDetailView detailView = new ItemDetailView();
                 detailView.DataContext = itemDetailViewModel;
-                detailView.Show();
+                detailView.ShowDialog();
             }
         }
 

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AppQuanLyCyberGame"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
- 
+        WindowStartupLocation="CenterOwner"
         Title="ItemDetailView" Height="600" Width="1000">
     <Border BorderThickness="1" BorderBrush="#FF807D7D" CornerRadius="10">
         <Grid>

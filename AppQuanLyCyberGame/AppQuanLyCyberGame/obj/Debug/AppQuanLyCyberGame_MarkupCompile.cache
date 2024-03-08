@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-F:\quanlycybergameTuan_Vinh\AppQuanLyCyberGame\AppQuanLyCyberGame\obj\Debug\
+F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\obj\Debug\
 AppQuanLyCyberGame
 none
 false
 DEBUG;TRACE
-F:\quanlycybergameTuan_Vinh\AppQuanLyCyberGame\AppQuanLyCyberGame\App.xaml
-101921316451
+F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\App.xaml
+11725924867
 2-1556844510
-35-1964187224
-2355281539
-DashboardWindow.xaml;FoodAndDrinkView.xaml;ItemDetailView.xaml;LoginWindow.xaml;MainWindow.xaml;ProfileUser.xaml;ResourceXAML\MainResource.xaml;StatisticsView.xaml;UsersWindow.xaml;Window1.xaml;
+371325481387
+2383484269
+DashboardWindow.xaml;FoodAndDrinkView.xaml;ItemDetailView.xaml;LoginWindow.xaml;MainUserControl.xaml;MainWindow.xaml;ProfileUser.xaml;ResourceXAML\MainResource.xaml;StatisticsView.xaml;UsersWindow.xaml;Window1.xaml;
 
 False
 
