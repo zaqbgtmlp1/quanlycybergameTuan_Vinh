@@ -54,3 +54,9 @@ F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\bin\Debug\LiveCharts.Wpf.pdb
 F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\bin\Debug\LiveCharts.Wpf.xml
 F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\obj\Debug\MainUserControl.g.cs
 F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\obj\Debug\MainUserControl.baml
+F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\obj\Debug\AddItemView.g.cs
+F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\obj\Debug\AddItemView.baml
+F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\obj\Debug\OrderWindow.g.cs
+F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\obj\Debug\OrderWindow.baml
+F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\obj\Debug\test.g.cs
+F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\obj\Debug\test.baml

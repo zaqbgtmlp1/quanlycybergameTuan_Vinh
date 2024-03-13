@@ -8,4 +8,6 @@
     <viewmodel:StatisticsViewModel x:Key="SVM"></viewmodel:StatisticsViewModel>
     <viewmodel:DashBoardStatisticsViewModel x:Key="DBSVM"></viewmodel:DashBoardStatisticsViewModel>
     <viewmodel:UserControlViewModel x:Key="UCVM"></viewmodel:UserControlViewModel>
+    <viewmodel:AddItemViewModel x:Key="AIVM"></viewmodel:AddItemViewModel>
+    <viewmodel:OrderViewModel x:Key="OVM"></viewmodel:OrderViewModel>
 </ResourceDictionary>

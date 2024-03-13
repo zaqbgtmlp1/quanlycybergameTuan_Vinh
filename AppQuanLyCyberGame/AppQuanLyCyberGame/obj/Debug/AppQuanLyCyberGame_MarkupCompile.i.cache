@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\App.xaml
-11725924867
+14-845399044
 2-1556844510
-38483122020
+432134641975
 2383484269
-DashboardWindow.xaml;FoodAndDrinkView.xaml;ItemDetailView.xaml;LoginWindow.xaml;MainUserControl.xaml;MainWindow.xaml;ProfileUser.xaml;ResourceXAML\MainResource.xaml;StatisticsView.xaml;UsersWindow.xaml;Window1.xaml;
+AddItemView.xaml;DashboardWindow.xaml;FoodAndDrinkView.xaml;ItemDetailView.xaml;LoginWindow.xaml;MainUserControl.xaml;MainWindow.xaml;OrderWindow.xaml;ProfileUser.xaml;ResourceXAML\MainResource.xaml;StatisticsView.xaml;test.xaml;UsersWindow.xaml;Window1.xaml;
 
 True
 

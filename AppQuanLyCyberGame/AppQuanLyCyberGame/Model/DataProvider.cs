@@ -95,5 +95,147 @@ namespace AppQuanLyCyberGame.Model
         }
 
 
+
+        public Item GetItemById(int itemId)
+        {
+            try
+            {
+                var item = DB.Items.FirstOrDefault(i => i.Id == itemId);
+                return item;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error retrieving item: {ex.Message}");
+                return null;
+            }
+        }
+
+        public bool UpdateItembyId(int itemId, string newDisplayName, double? newCost, int? newNumber)
+        {
+            try
+            {
+                var itemToUpdate = GetItemById(itemId);
+
+                if (itemToUpdate != null)
+                {
+                    // Cập nhật thông tin sản phẩm
+                    itemToUpdate.DisplayName = newDisplayName;
+                    itemToUpdate.Cost = newCost;
+                    itemToUpdate.Number = newNumber;
+
+                    // Lưu thay đổi vào cơ sở dữ liệu
+                    DB.SaveChanges();
+
+                    Debug.WriteLine($"Item with ID {itemId} updated successfully.");
+                    return true;
+                }
+                else
+                {
+                    Debug.WriteLine($"Item with ID {itemId} not found.");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error updating item: {ex.Message}");
+                return false;
+            }
+        }
+
+
+        public bool HideItembyId(int itemId)
+        {
+            try
+            {
+                var itemToUpdate = GetItemById(itemId);
+
+                if (itemToUpdate != null)
+                {   
+                    if (itemToUpdate.Itemstatus == true)
+                    // Cập nhật thông tin sản phẩm
+                        itemToUpdate.Itemstatus = false;
+                    
+                    else
+                        itemToUpdate.Itemstatus = true;
+
+                    // Lưu thay đổi vào cơ sở dữ liệu
+                    DB.SaveChanges();
+
+                    Debug.WriteLine($"Item with ID {itemId} updated successfully.");
+                    return true;
+                }
+                else
+                {
+                    Debug.WriteLine($"Item with ID {itemId} not found.");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error updating item: {ex.Message}");
+                return false;
+            }
+        }
+
+
+        public bool AddItem(string displayName, double? cost, int? number)
+        {
+            try
+            {
+                // Kiểm tra thông tin có hợp lệ hay không
+                if (string.IsNullOrEmpty(displayName) || cost == null || number == null)
+                {
+                    Debug.WriteLine("Invalid information for adding item.");
+                    return false;
+                }
+
+                // Tạo đối tượng Item mới
+                var newItem = new Item
+                {
+                    DisplayName = displayName,
+                    Cost = cost,
+                    Number = number,
+                    Itemstatus = false // Mặc định cho trạng thái là true khi thêm mới
+                };
+
+                // Thêm vào cơ sở dữ liệu và lưu thay đổi
+                DB.Items.Add(newItem);
+                DB.SaveChanges();
+
+                Debug.WriteLine($"Item '{displayName}' added successfully.");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error adding item: {ex.Message}");
+                return false;
+            }
+        }
+
+
+
+        public bool OrderItem(double total, int iduser, string status)
+        {
+         
+                // Tạo đối tượng Item mới
+                var newOrder = new Bill
+                {
+                    Total = total,
+                    IdUser = iduser,
+                    BillStatus = status,
+                    orderat = DateTime.Now
+                };
+
+                // Thêm vào cơ sở dữ liệu và lưu thay đổi
+                DB.Bills.Add(newOrder);
+                DB.SaveChanges();
+                
+
+            return true;
+            
+        }
+
+        
+
     }
 }
