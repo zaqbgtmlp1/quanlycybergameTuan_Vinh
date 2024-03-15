@@ -24,24 +24,11 @@ namespace AppQuanLyCyberGame.ViewModel
             }
         }
 
-        private string _imagePath;
-
-        public string ImagePath
-        {
-            get { return _imagePath; }
-            set
-            {
-                if (_imagePath != value)
-                {
-                    _imagePath = value;
-                    OnPropertyChanged(nameof(ImagePath));
-                }
-            }
-        }
+        
         public ItemDetailViewModel(Item selectedItem)
         {
             SelectedItem = selectedItem;
-            ImagePath = "F:\\DA2\\VS2019\\AppQuanLyCyberGame\\AppQuanLyCyberGame\\Image\\1.jpg";
+            
         }
 
 
@@ -70,7 +57,7 @@ namespace AppQuanLyCyberGame.ViewModel
 
         private void UpdateItem()
         {
-            DataProvider.Ins.UpdateItembyId(SelectedItem.Id, SelectedItem?.DisplayName, SelectedItem.Cost, SelectedItem.Number);
+            DataProvider.Ins.UpdateItembyId(SelectedItem.Id, SelectedItem?.DisplayName, SelectedItem.Cost, SelectedItem.Number, SelectedItem.imagepath);
             
             OnPropertyChanged(nameof(SelectedItem));
             MessageBox.Show("Update Thành Công");
@@ -138,10 +125,10 @@ namespace AppQuanLyCyberGame.ViewModel
                 // Chắc chắn rằng SelectedItem không null
                 if (SelectedItem != null)
                 {
-                    ImagePath = selectedImagePath;
-                    OnPropertyChanged(nameof(ImagePath));
+                    SelectedItem.imagepath = selectedImagePath;
+                    OnPropertyChanged(nameof(SelectedItem));
                 }
-                MessageBox.Show(ImagePath);
+                
             }
         }
 

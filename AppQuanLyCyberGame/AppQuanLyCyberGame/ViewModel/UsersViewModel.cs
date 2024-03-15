@@ -37,25 +37,10 @@ namespace AppQuanLyCyberGame.ViewModel
             var dataProvider = DataProvider.Ins;
             var UsersFromDatabase = dataProvider.GetUsers();
 
-            var filteredUsers = UsersFromDatabase.Where(user => user.IdRole == 1).ToList();
+            
 
-            Users = new ObservableCollection<User>(filteredUsers);
+            Users = new ObservableCollection<User>(UsersFromDatabase);
         }
-        public ICommand ShowProfileCommand { get; private set; }
-        private void ShowProfile(object parameter)
-        {
-            MessageBox.Show("da goi");
-            // Lấy Id từ parameter và thực hiện navigation tới ProfileUser
-            if (parameter is int Id)
-            {
-                // Tạo một instance của ProfileUserViewModel, chuyển dữ liệu cần thiết (ví dụ: userId)
-                DetailUserModel profileViewModel = new DetailUserModel(Id);
-
-                // Tạo một instance mới của ProfileUserView và chuyển nó vào
-                ProfileUser profileView = new ProfileUser();
-                profileView.DataContext = profileViewModel;
-                profileView.Show();
-            }
-        }
+        
     }
 }

@@ -33,8 +33,11 @@ namespace AppQuanLyCyberGame.ViewModel
         private void LoadData()
         {
             var dataProvider = DataProvider.Ins;
-            var itemFromDatabase = dataProvider.GetItems();
-            Items = new ObservableCollection<Item>(itemFromDatabase);
+            var itemsFromDatabase = dataProvider.GetItems();
+      
+            var sortedItems = itemsFromDatabase.OrderByDescending(item => item.ordered);
+     
+            Items = new ObservableCollection<Item>(sortedItems);
         }
 
 
@@ -94,15 +97,24 @@ namespace AppQuanLyCyberGame.ViewModel
             }
         }
 
-        private RelayCommand<object> _addToCartCommand;
+        
 
        
 
         public void AddToCart(Item item)
         {
-            item.Number = 1;
-            if (!CartItems.Contains(item))
+            Item exitem = CartItems.FirstOrDefault(u => u.Id == item.Id);
+            if (exitem != null)
             {
+                // Mục đã tồn tại trong CartItems, cập nhật tên của nó
+                
+                exitem.Number++;
+                MessageBox.Show(exitem.Number.ToString());
+            }
+            else
+            {
+                // Mục không tồn tại trong CartItems, thêm mới vào
+                item.Number = 1;
                 CartItems.Add(item);
             }
         }
@@ -132,7 +144,7 @@ namespace AppQuanLyCyberGame.ViewModel
         private void OrderItem()
         {
            
-            MessageBox.Show("Update Thành Công");
+            MessageBox.Show("Quý khách đã gọi món thành công");
 
             double total = 0;
             foreach (var item in CartItems)
@@ -140,10 +152,9 @@ namespace AppQuanLyCyberGame.ViewModel
                 total = total + item.Cost.GetValueOrDefault()*item.Number.GetValueOrDefault();
             }
 
-            int IDuser = 1;
+            
 
-            MessageBox.Show(total.ToString());
-            DataProvider.Ins.OrderItem(total, 1, "0");
+            DataProvider.Ins.OrderItem(total, UserAccount.Instance.LoggedInUser.Id, "0");
            
         }
 

@@ -23,5 +23,7 @@ namespace AppQuanLyCyberGame
         {
             InitializeComponent();
         }
+
+        
     }
 }

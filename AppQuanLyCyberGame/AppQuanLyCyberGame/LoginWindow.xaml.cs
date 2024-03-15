@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppQuanLyCyberGame.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,16 @@ namespace AppQuanLyCyberGame
         public LoginWindow()
         {
             InitializeComponent();
+        }
+
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            PasswordBox passwordBox = sender as PasswordBox;
+            if (passwordBox != null)
+            {
+                // Lấy mật khẩu từ PasswordBox và gán vào thuộc tính Password trong ViewModel
+                ((LoginViewModel)DataContext).SelectedUser.Password = passwordBox.Password;
+            }
         }
     }
 }

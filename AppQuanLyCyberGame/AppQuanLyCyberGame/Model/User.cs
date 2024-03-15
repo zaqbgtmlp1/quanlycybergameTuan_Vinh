@@ -29,6 +29,8 @@ namespace AppQuanLyCyberGame.Model
         public string Phonenumber { get; set; }
         public string Useraddress { get; set; }
         public Nullable<bool> Userstatus { get; set; }
+        public Nullable<double> currentBalance { get; set; }
+        public string avatar { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bill> Bills { get; set; }

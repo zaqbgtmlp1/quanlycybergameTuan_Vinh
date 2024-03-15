@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
 
+
 namespace AppQuanLyCyberGame.ViewModel
 {
     public class ItemViewModel: BaseViewModel
@@ -84,6 +85,37 @@ namespace AppQuanLyCyberGame.ViewModel
                 LoadData();
             }
         }
+
+        private RelayCommand<object> _addItemCommand;
+
+        public ICommand AddItemCommand
+        {
+            get
+            {
+                if (_addItemCommand == null)
+                {
+                    _addItemCommand = new RelayCommand<object>(
+                        p => true,
+                        p => NavigateToAddItemView()
+                    );
+                }
+                return _addItemCommand;
+            }
+        }
+
+        private void NavigateToAddItemView()
+        {
+            var AddItemView = new AddItemView();
+            
+            AddItemView.ShowDialog();
+
+        }
+
+
+
+
+       
+
 
 
     }

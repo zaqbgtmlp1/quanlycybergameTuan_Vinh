@@ -19,7 +19,7 @@ namespace AppQuanLyCyberGame.ViewModel
                 if (_itemCommand == null)
                 {
                     _itemCommand = new RelayCommand<object>(
-                        p => true, // Bạn có thể thay đổi điều kiện kiểm tra có thể thực hiện lệnh hay không
+                        p => true, 
                         p => NavigateToItemWindow()
                     );
                 }
@@ -47,7 +47,7 @@ namespace AppQuanLyCyberGame.ViewModel
                 if (_mainCommand == null)
                 {
                     _mainCommand = new RelayCommand<object>(
-                        p => true, // Bạn có thể thay đổi điều kiện kiểm tra có thể thực hiện lệnh hay không
+                        p => true, 
                         p => NavigateToMainWindow()
                     );
                 }
@@ -66,28 +66,28 @@ namespace AppQuanLyCyberGame.ViewModel
 
 
 
-        private RelayCommand<object> _employeeCommand;
+        private RelayCommand<object> _ssCommand;
 
-        public ICommand EmployeeCommand
+        public ICommand SSCommand
         {
             get
             {
-                if (_employeeCommand == null)
+                if (_ssCommand == null)
                 {
-                    _employeeCommand = new RelayCommand<object>(
-                        p => true, // Bạn có thể thay đổi điều kiện kiểm tra có thể thực hiện lệnh hay không
-                        p => NavigateToUserWindow()
+                    _ssCommand = new RelayCommand<object>(
+                        p => true, 
+                        p => NavigateToStatisticsWindow()
                     );
                 }
-                return _employeeCommand;
+                return _ssCommand;
             }
         }
 
-        private void NavigateToEmployeeWindow()
+        private void NavigateToStatisticsWindow()
         {
-            var userWindow = new UsersWindow();
+            var ssWindow = new StatisticsView();
             CloseCurrentView();
-            userWindow.ShowDialog();
+            ssWindow.ShowDialog();
 
         }
 
@@ -100,7 +100,7 @@ namespace AppQuanLyCyberGame.ViewModel
                 if (_userCommand == null)
                 {
                     _userCommand = new RelayCommand<object>(
-                        p => true, // Bạn có thể thay đổi điều kiện kiểm tra có thể thực hiện lệnh hay không
+                        p => true, 
                         p => NavigateToUserWindow()
                     );
                 }

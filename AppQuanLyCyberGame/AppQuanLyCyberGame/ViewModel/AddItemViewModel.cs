@@ -52,8 +52,48 @@ namespace AppQuanLyCyberGame.ViewModel
 
         private void AddItem()
         {
-            DataProvider.Ins.AddItem(SelectedItem.DisplayName, SelectedItem.Cost, SelectedItem.Number);
+            DataProvider.Ins.AddItem(SelectedItem.DisplayName, SelectedItem.Cost, SelectedItem.Number,SelectedItem.imagepath);
             MessageBox.Show("Thêm thành công");
+        }
+
+
+        private RelayCommand<object> _changeImageCommand;
+
+        public ICommand ChangeImageCommand
+        {
+            get
+            {
+                if (_changeImageCommand == null)
+                {
+                    _changeImageCommand = new RelayCommand<object>(
+                        p => true,
+                        p => ChangeImage()
+                    );
+                }
+                return _changeImageCommand;
+            }
+        }
+
+
+        private void ChangeImage()
+        {
+            Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();
+            openFileDialog.Filter = "Image files (*.png;*.jpeg;*.jpg)|*.png;*.jpeg;*.jpg|All files (*.*)|*.*";
+            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+
+            bool? result = openFileDialog.ShowDialog();
+            if (result == true)
+            {
+                string selectedImagePath = openFileDialog.FileName;
+
+                // Chắc chắn rằng SelectedItem không null
+                if (SelectedItem != null)
+                {
+                    SelectedItem.imagepath = selectedImagePath;
+                    OnPropertyChanged(nameof(SelectedItem));
+                }
+
+            }
         }
     }
 }

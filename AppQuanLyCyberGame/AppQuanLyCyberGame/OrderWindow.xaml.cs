@@ -38,6 +38,8 @@ namespace AppQuanLyCyberGame
 
             viewModel.AddToCart(selectedItem);
 
+            
+
         }
 
         private void OnMouseEnter(object sender, MouseEventArgs e)

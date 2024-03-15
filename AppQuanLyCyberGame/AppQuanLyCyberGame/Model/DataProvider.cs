@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace AppQuanLyCyberGame.Model
 {
@@ -26,11 +27,11 @@ namespace AppQuanLyCyberGame.Model
             }
         }
 
-        public QuanLyCyberGameEntities DB { get; set; }
+        public QuanLyCyberGameEntitiesFilnal DB { get; set; }
 
         private DataProvider()
         {
-            DB = new QuanLyCyberGameEntities();
+            DB = new QuanLyCyberGameEntitiesFilnal();
         }
 
 
@@ -110,7 +111,7 @@ namespace AppQuanLyCyberGame.Model
             }
         }
 
-        public bool UpdateItembyId(int itemId, string newDisplayName, double? newCost, int? newNumber)
+        public bool UpdateItembyId(int itemId, string newDisplayName, double? newCost, int? newNumber, string imagepath)
         {
             try
             {
@@ -122,7 +123,7 @@ namespace AppQuanLyCyberGame.Model
                     itemToUpdate.DisplayName = newDisplayName;
                     itemToUpdate.Cost = newCost;
                     itemToUpdate.Number = newNumber;
-
+                    itemToUpdate.imagepath = imagepath;
                     // Lưu thay đổi vào cơ sở dữ liệu
                     DB.SaveChanges();
 
@@ -178,7 +179,7 @@ namespace AppQuanLyCyberGame.Model
         }
 
 
-        public bool AddItem(string displayName, double? cost, int? number)
+        public bool AddItem(string displayName, double? cost, int? number, string img)
         {
             try
             {
@@ -195,7 +196,8 @@ namespace AppQuanLyCyberGame.Model
                     DisplayName = displayName,
                     Cost = cost,
                     Number = number,
-                    Itemstatus = false // Mặc định cho trạng thái là true khi thêm mới
+                    Itemstatus = false, // Mặc định cho trạng thái là true khi thêm mới
+                    imagepath = img
                 };
 
                 // Thêm vào cơ sở dữ liệu và lưu thay đổi
@@ -214,6 +216,20 @@ namespace AppQuanLyCyberGame.Model
 
 
 
+
+        public User GetUserById(int Id)
+        {
+            try
+            {
+                var user = DB.Users.FirstOrDefault(i => i.Id == Id);
+                return user;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error retrieving item: {ex.Message}");
+                return null;
+            }
+        }
         public bool OrderItem(double total, int iduser, string status)
         {
          
@@ -235,7 +251,87 @@ namespace AppQuanLyCyberGame.Model
             
         }
 
-        
+
+        public bool UpdateUserbyId(int idUser, string DisplayName, string Password, string Phonenumber, string UserAddress, string avatar)
+        {
+            try
+            {
+                var userToUpdate = GetUserById(idUser);
+
+                if (userToUpdate != null)
+                {
+                    // Cập nhật thông tin sản phẩm
+                    userToUpdate.DisplayName = DisplayName;
+                    userToUpdate.Phonenumber = Phonenumber;
+                    userToUpdate.Password = Password;
+                    userToUpdate.Useraddress = UserAddress;
+                    userToUpdate.avatar = avatar;
+                    // Lưu thay đổi vào cơ sở dữ liệu
+                    DB.SaveChanges();
+
+                    Debug.WriteLine($"Item with ID {idUser} updated successfully.");
+                    return true;
+                }
+                else
+                {
+                    Debug.WriteLine($"Item with ID {idUser} not found.");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error updating item: {ex.Message}");
+                return false;
+            }
+        }
+
+        public bool GetUserByUsername(string username)
+        {
+            return DB.Users.Any(i => i.UserName == username);
+        }
+
+        public bool CheckPass(string username, string password)
+        {
+            try
+            {
+                var user = DB.Users.FirstOrDefault(i => i.UserName == username);
+
+                if (password == user.Password)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error retrieving item: {ex.Message}");
+                return false;
+            }
+        }
+
+
+        public User LoginApp(string username, string password)
+        {
+            try
+            {
+                if (GetUserByUsername(username) == true)
+                {
+                    if (CheckPass(username, password) == true)
+                    {
+                        var user = DB.Users.FirstOrDefault(i => i.UserName == username);
+                        return user;
+                    }
+                    else
+                        return null;
+                }
+                else
+                    return null;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error retrieving item: {ex.Message}");
+                return null;
+            }
+        }
 
     }
 }

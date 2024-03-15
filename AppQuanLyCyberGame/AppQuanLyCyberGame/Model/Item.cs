@@ -25,6 +25,8 @@ namespace AppQuanLyCyberGame.Model
         public Nullable<double> Cost { get; set; }
         public Nullable<int> Number { get; set; }
         public Nullable<bool> Itemstatus { get; set; }
+        public Nullable<int> ordered { get; set; }
+        public string imagepath { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BillDetail> BillDetails { get; set; }

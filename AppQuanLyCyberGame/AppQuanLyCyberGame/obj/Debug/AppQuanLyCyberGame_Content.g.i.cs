@@ -8,7 +8,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/main%20model%20final.context.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/main%20model%20final.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/mainmodel.context.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/mainmodel.tt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/model1.context.tt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/model1.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/model2.context.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/model2.tt")]
 
 

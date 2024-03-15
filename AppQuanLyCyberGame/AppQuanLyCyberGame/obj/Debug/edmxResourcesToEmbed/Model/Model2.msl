@@ -1,18 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="QuanLyCyberGameModel1StoreContainer" CdmEntityContainer="QuanLyCyberGameEntities5">
+  <EntityContainerMapping StorageEntityContainer="QuanLyCyberGameModel3StoreContainer" CdmEntityContainer="QuanLyCyberGameEntities1">
     <EntitySetMapping Name="Bills">
-      <EntityTypeMapping TypeName="QuanLyCyberGameModel1.Bill">
+      <EntityTypeMapping TypeName="QuanLyCyberGameModel3.Bill">
         <MappingFragment StoreEntitySet="Bill">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Total" ColumnName="Total" />
           <ScalarProperty Name="IdUser" ColumnName="IdUser" />
           <ScalarProperty Name="BillStatus" ColumnName="BillStatus" />
+          <ScalarProperty Name="orderat" ColumnName="orderat" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="BillDetails">
-      <EntityTypeMapping TypeName="QuanLyCyberGameModel1.BillDetail">
+      <EntityTypeMapping TypeName="QuanLyCyberGameModel3.BillDetail">
         <MappingFragment StoreEntitySet="BillDetail">
           <ScalarProperty Name="BillId" ColumnName="BillId" />
           <ScalarProperty Name="ItemId" ColumnName="ItemId" />
@@ -22,7 +23,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Chats">
-      <EntityTypeMapping TypeName="QuanLyCyberGameModel1.Chat">
+      <EntityTypeMapping TypeName="QuanLyCyberGameModel3.Chat">
         <MappingFragment StoreEntitySet="Chat">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
@@ -31,7 +32,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ClientComputers">
-      <EntityTypeMapping TypeName="QuanLyCyberGameModel1.ClientComputer">
+      <EntityTypeMapping TypeName="QuanLyCyberGameModel3.ClientComputer">
         <MappingFragment StoreEntitySet="ClientComputer">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="CCStatus" ColumnName="CCStatus" />
@@ -40,7 +41,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ClientComputerTypes">
-      <EntityTypeMapping TypeName="QuanLyCyberGameModel1.ClientComputerType">
+      <EntityTypeMapping TypeName="QuanLyCyberGameModel3.ClientComputerType">
         <MappingFragment StoreEntitySet="ClientComputerType">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
@@ -49,18 +50,20 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Items">
-      <EntityTypeMapping TypeName="QuanLyCyberGameModel1.Item">
+      <EntityTypeMapping TypeName="QuanLyCyberGameModel3.Item">
         <MappingFragment StoreEntitySet="Item">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
           <ScalarProperty Name="Cost" ColumnName="Cost" />
           <ScalarProperty Name="Number" ColumnName="Number" />
           <ScalarProperty Name="Itemstatus" ColumnName="Itemstatus" />
+          <ScalarProperty Name="ordered" ColumnName="ordered" />
+          <ScalarProperty Name="imagepath" ColumnName="imagepath" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="QuanLyCyberGameModel1.sysdiagram">
+      <EntityTypeMapping TypeName="QuanLyCyberGameModel3.sysdiagram">
         <MappingFragment StoreEntitySet="sysdiagrams">
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -71,7 +74,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="UserRoles">
-      <EntityTypeMapping TypeName="QuanLyCyberGameModel1.UserRole">
+      <EntityTypeMapping TypeName="QuanLyCyberGameModel3.UserRole">
         <MappingFragment StoreEntitySet="UserRole">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
@@ -79,7 +82,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Users">
-      <EntityTypeMapping TypeName="QuanLyCyberGameModel1.User">
+      <EntityTypeMapping TypeName="QuanLyCyberGameModel3.User">
         <MappingFragment StoreEntitySet="Users">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
@@ -90,6 +93,8 @@
           <ScalarProperty Name="Phonenumber" ColumnName="Phonenumber" />
           <ScalarProperty Name="Useraddress" ColumnName="Useraddress" />
           <ScalarProperty Name="Userstatus" ColumnName="Userstatus" />
+          <ScalarProperty Name="currentBalance" ColumnName="currentBalance" />
+          <ScalarProperty Name="avatar" ColumnName="avatar" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

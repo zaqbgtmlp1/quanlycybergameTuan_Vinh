@@ -8,7 +8,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         DataContext="{StaticResource SVM}"
         WindowStartupLocation="CenterOwner"
-        Title="StatisticsView" Height="450" Width="800">
+        Title="StatisticsView" Height="800" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
@@ -97,8 +97,8 @@
                         <Grid Grid.Row="3">
 
 
-                            <TextBlock Text="Tổng:" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="21,272,0,-9" RenderTransformOrigin="1.49,-0.104" Height="38"/>
-                            <TextBlock Text="{Binding TotalAmount, StringFormat={}{0} VNĐ}" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="237,272,0,0" RenderTransformOrigin="-35.042,5.644" Height="29" Width="199"/>
+                            <TextBlock Text="Tổng:" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="21,592,0,21" RenderTransformOrigin="1.49,-0.104" Height="38"/>
+                            <TextBlock Text="{Binding TotalAmount, StringFormat={}{0} VNĐ}" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="237,592,0,30" RenderTransformOrigin="-35.042,5.644" Height="29" Width="199"/>
                         </Grid>
 
 

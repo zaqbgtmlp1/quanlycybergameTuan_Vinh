@@ -10,7 +10,9 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         WindowStartupLocation="CenterOwner"
-        Title="Food And Drink" Height="600" Width="1200">
+        Title="Food And Drink" Height="600" Width="1200"
+        Background="#FFFFF0"
+        >
 
     <Grid>
         <Grid.RowDefinitions>
@@ -18,7 +20,8 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
-
+        <TextBlock Grid.Row="0" FontSize="30" FontWeight="Bold" Text="Ứng dụng gọi món ăn" Margin="0 12 0 0"
+                   Foreground="#00A3FF" VerticalAlignment="Top" HorizontalAlignment="Center"/>
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"></RowDefinition>
@@ -46,10 +49,10 @@
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <!-- Đoạn mã hiển thị sản phẩm tương tự như trước -->
-                                <Border BorderBrush="Black" BorderThickness="1" Margin="5" Padding="5" Width="180" Height="180" MouseLeftButtonDown="OnBorderClicked" MouseEnter="OnMouseEnter" MouseLeave="OnMouseLeave">
+                                <Border BorderBrush="Black" BorderThickness="1" Margin="5" Padding="5" Width="180" Height="180" MouseLeftButtonDown="OnBorderClicked" MouseEnter="OnMouseEnter" MouseLeave="OnMouseLeave" Background="White">
 
                                     <StackPanel>
-                                        <Image Source="F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\Image\1.jpg" Width="100" Height="100" />
+                                        <Image Source="{Binding imagepath}" Width="100" Height="100" />
 
                                         <Grid Grid.Row="1" >
                                             <Grid.ColumnDefinitions>
@@ -91,10 +94,10 @@
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Border BorderBrush="Black" BorderThickness="1" Margin="5" Padding="5" Width="180" Height="180" MouseEnter="OnMouseEnter" MouseLeave="OnMouseLeave">
+                                <Border BorderBrush="Black" BorderThickness="1" Margin="5" Padding="5" Width="180" Height="180" MouseEnter="OnMouseEnter" MouseLeave="OnMouseLeave" Background="White">
 
                                     <StackPanel>
-                                        <Image Source="F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\Image\1.jpg" Width="100" Height="100" />
+                                        <Image Source="{Binding imagepath}" Width="100" Height="100" />
 
                                         <Grid Grid.Row="1" >
                                             <Grid.ColumnDefinitions>
@@ -108,6 +111,7 @@
                                             <StackPanel Grid.Column="0" Width="100">
                                                 <TextBlock Text="{Binding DisplayName}" Margin="5,0,0,0" FontWeight="Bold" TextWrapping="Wrap"  MaxWidth="100" />
                                                 <TextBlock Text="{Binding Cost, StringFormat='Price: {0:C0}', ConverterCulture='vi-VN'}" Margin="5,0,0,0" />
+                                                <TextBlock Text="{Binding Number}" Margin="5,0,0,0" TextWrapping="Wrap"  MaxWidth="100" />
                                             </StackPanel>
 
                                             <!-- Cột 2: Button -->

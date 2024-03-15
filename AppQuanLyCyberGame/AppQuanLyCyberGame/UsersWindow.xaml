@@ -8,7 +8,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         DataContext="{StaticResource UsersVM}"
         WindowStartupLocation="CenterOwner"
-        Title="MainWindow" Height="450" Width="800">
+        Title="User Window" Height="450" Width="800">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -71,9 +71,9 @@
                             <Separator></Separator>
                         </Grid>
                         <Grid Grid.Row="2">
-                            <ListView ItemsSource="{Binding Users}">
+                            <ListView ItemsSource="{Binding Users}" SelectionChanged="OnListViewSelectionChanged">
                                 <ListView.View>
-                                    <GridView>
+                                    <GridView >
                                         <GridViewColumn Header="User Id" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
                                         <GridViewColumn Header="Họ tên" DisplayMemberBinding="{Binding DisplayName}"></GridViewColumn>
                                         <GridViewColumn Header="Role">
@@ -102,7 +102,7 @@
                                         <GridViewColumn>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <Button Content="Chi tiết" Command="{Binding ShowProfileCommand}" CommandParameter="{Binding Id}" />
+                                                    
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
@@ -111,6 +111,7 @@
                                 </ListView.View>
                             </ListView>
                         </Grid>
+                        
                     </Grid>
                 </materialDesign:Card>
 
