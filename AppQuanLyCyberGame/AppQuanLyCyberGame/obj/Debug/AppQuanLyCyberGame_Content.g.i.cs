@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/hello.py")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/predict.py")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/main%20model%20final.context.tt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/main%20model%20final.tt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/mainmodel.context.tt")]
@@ -16,5 +18,9 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/model1.tt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/model2.context.tt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/model2.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/model3.context.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/model3.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/model4.context.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/model4.tt")]
 
 

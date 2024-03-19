@@ -11,4 +11,8 @@
     <viewmodel:AddItemViewModel x:Key="AIVM"></viewmodel:AddItemViewModel>
     <viewmodel:OrderViewModel x:Key="OVM"></viewmodel:OrderViewModel>
     <viewmodel:ProfileUserViewModel x:Key="PUVM"></viewmodel:ProfileUserViewModel>
+    <viewmodel:ChatViewModel x:Key="CVM"></viewmodel:ChatViewModel>
+    <viewmodel:ClientViewModel x:Key="ClientVM"></viewmodel:ClientViewModel>
+    <viewmodel:BasicChatViewModel x:Key="BCVM"></viewmodel:BasicChatViewModel>
+    
 </ResourceDictionary>

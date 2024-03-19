@@ -40,48 +40,102 @@
 
 
                 <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto">
-                    <ItemsControl ItemsSource="{Binding Items}">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <UniformGrid Columns="4" HorizontalAlignment="Left" />
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <!-- Đoạn mã hiển thị sản phẩm tương tự như trước -->
-                                <Border BorderBrush="Black" BorderThickness="1" Margin="5" Padding="5" Width="180" Height="180" MouseLeftButtonDown="OnBorderClicked" MouseEnter="OnMouseEnter" MouseLeave="OnMouseLeave" Background="White">
-
-                                    <StackPanel>
-                                        <Image Source="{Binding imagepath}" Width="100" Height="100" />
-
-                                        <Grid Grid.Row="1" >
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto" />
-                                                <!-- Cột cho TextBlock -->
-                                                <ColumnDefinition Width="Auto" />
-                                                <!-- Cột cho Button -->
-                                            </Grid.ColumnDefinitions>
-
-                                            <!-- Cột 1: TextBlock -->
-                                            <StackPanel Grid.Column="0" Width="100">
-                                                <TextBlock Text="{Binding DisplayName}" Margin="5,0,0,0" FontWeight="Bold" TextWrapping="Wrap"  MaxWidth="100" />
-                                                <TextBlock Text="{Binding Cost, StringFormat='Price: {0:C0}', ConverterCulture='vi-VN'}" Margin="5,0,0,0" />
-                                            </StackPanel>
-
-                                            <!-- Cột 2: Button -->
+                    <StackPanel>
 
 
+                        <ItemsControl ItemsSource="{Binding RecommendItems}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid Columns="4" HorizontalAlignment="Left" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <!-- Đoạn mã hiển thị sản phẩm tương tự như trước -->
+                                    <Border BorderBrush="Black" BorderThickness="1" Margin="5" Padding="5" Width="180" Height="180" MouseLeftButtonDown="OnBorderClicked" MouseEnter="OnMouseEnter" MouseLeave="OnMouseLeave" Background="White">
+
+                                        <StackPanel>
+                                            <Image Source="{Binding imagepath}" Width="100" Height="100" />
 
 
-                                        </Grid>
+                                            <Grid Grid.Row="1" >
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <!-- Cột cho TextBlock -->
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <!-- Cột cho Button -->
+                                                </Grid.ColumnDefinitions>
 
-                                    </StackPanel>
+                                                <!-- Cột 1: TextBlock -->
+                                                <StackPanel Grid.Column="0" Width="100">
+                                                    <TextBlock Text="{Binding DisplayName}" Margin="5,0,0,0" FontWeight="Bold" TextWrapping="Wrap"  MaxWidth="100" />
+                                                    <TextBlock Text="{Binding Cost, StringFormat='Price: {0:C0}', ConverterCulture='vi-VN'}" Margin="5,0,0,0" />
+                                                </StackPanel>
+                                            </Grid>
 
-                                </Border>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
+                                        </StackPanel>
+
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+
+
+                        <ItemsControl ItemsSource="{Binding Items}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid Columns="4" HorizontalAlignment="Left" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <!-- Đoạn mã hiển thị sản phẩm tương tự như trước -->
+                                    <Border BorderBrush="Black" BorderThickness="1" Margin="5" Padding="5" Width="180" Height="180" MouseLeftButtonDown="OnBorderClicked" MouseEnter="OnMouseEnter" MouseLeave="OnMouseLeave" Background="White">
+
+                                        <StackPanel>
+                                            <Image Source="{Binding imagepath}" Width="100" Height="100" />
+
+
+                                            <Grid Grid.Row="1" >
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <!-- Cột cho TextBlock -->
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <!-- Cột cho Button -->
+                                                </Grid.ColumnDefinitions>
+
+                                                <!-- Cột 1: TextBlock -->
+                                                <StackPanel Grid.Column="0" Width="100">
+                                                    <TextBlock Text="{Binding DisplayName}" Margin="5,0,0,0" FontWeight="Bold" TextWrapping="Wrap"  MaxWidth="100" />
+                                                    <TextBlock Text="{Binding Cost, StringFormat='Price: {0:C0}', ConverterCulture='vi-VN'}" Margin="5,0,0,0" />
+                                                </StackPanel>
+                                            </Grid>
+
+                                        </StackPanel>
+
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                    </StackPanel>
+
+
                 </ScrollViewer>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
 
                 <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
 
@@ -126,7 +180,6 @@
                             HorizontalAlignment="Right" 
                                 Command="{Binding OrderCommand}"
                                 VerticalAlignment="Bottom" Margin="0,0,29,32" Grid.Column="1">
-
                     <Button.Clip>
                         <RectangleGeometry Rect="0,0,89,36" RadiusX="10" RadiusY="10"/>
                     </Button.Clip>

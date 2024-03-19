@@ -1,0 +1,96 @@
+﻿<Window x:Class="AppQuanLyCyberGame.ClientWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppQuanLyCyberGame"
+        mc:Ignorable="d"
+        DataContext="{StaticResource ClientVM}"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="MAY !" Height="450" Width="250">
+    <Grid Margin="0,0,-205,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="95*"/>
+            <ColumnDefinition Width="99*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <Grid Height="25" Width="213" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10 25 0 0">
+
+            <materialDesign:PackIcon Kind="ClockFast" Height="25" Width="25" Margin="0,33,0,-33"/>
+            <TextBlock Text="Thời gian đã dùng" HorizontalAlignment="Center" Margin="39,10,45,-12" FontSize="16"/>
+
+            <TextBlock Text="{Binding ElapsedTime, StringFormat=hh\\:mm\\:ss}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Grid.ColumnSpan="2" Margin="50,29,75,-36"/>
+
+
+        </Grid>
+
+        <Grid Height="25" Width="213" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10 75 0 0">
+
+            <materialDesign:PackIcon Kind="Cash" Height="25" Width="25" Margin="0,63,0,-63"/>
+
+            <TextBlock Text="Tài khoản" HorizontalAlignment="Center" Margin="39,33,107,-49" FontSize="16"/>
+            <TextBox x:Name="txbCCCD" MaxLength="12" Margin="30,60,0,-60" materialDesign:HintAssist.Hint="Nhập CCCD"
+                                     Text="{Binding SelectedUser.balance, Mode=TwoWay}"
+                                     />
+        </Grid>
+
+        <Grid Height="34" Width="213" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10 25 0 0" Grid.ColumnSpan="2">
+
+            <materialDesign:PackIcon Kind="ClockMinusOutline" Height="25" Width="25" Margin="0,213,0,-204"/>
+            <TextBlock Text="Thời gian còn lại" HorizontalAlignment="Center" Margin="40,185,57,-188" FontSize="16"/>
+
+            <TextBlock Text="{Binding FormattedTime, StringFormat=hh\\:mm\\:ss}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Margin="50,210,75,-208"/>
+
+
+        </Grid>
+
+        <Button Content="Đăng xuất" 
+        Width="98" 
+        Height="36" 
+        Background="#478C10"
+        Command="{Binding LogoutCommand}"
+        VerticalAlignment="Bottom" 
+        HorizontalAlignment="Center"
+        Margin="14,0,108,100">
+            <Button.Clip>
+                <RectangleGeometry Rect="0,0,89,36" RadiusX="10" RadiusY="10"/>
+            </Button.Clip>
+        </Button>
+
+
+        <Button Content="Nạp tiền" 
+        Width="92" 
+        Height="36" 
+        Background="#478C10"
+        Command="{Binding ChargeMoneyCommand}"
+        VerticalAlignment="Bottom" 
+        HorizontalAlignment="Center"
+        Margin="14,0,114,45">
+            <Button.Clip>
+                <RectangleGeometry Rect="0,0,89,36" RadiusX="10" RadiusY="10"/>
+            </Button.Clip>
+        </Button>
+
+        <Button Content="Chat" Width="90" Height="36" Background="#478C10"
+                            HorizontalAlignment="Right" 
+                                Command="{Binding ChatCommand}"
+                                VerticalAlignment="Bottom" Margin="0,0,227,101" Grid.ColumnSpan="2">
+            <Button.Clip>
+                <RectangleGeometry Rect="0,0,89,36" RadiusX="10" RadiusY="10"/>
+            </Button.Clip>
+        </Button>
+
+        <Button Content="Chatbot" Width="90" Height="36" Background="#478C10"
+                            HorizontalAlignment="Right" 
+                                Command="{Binding ChatbotCommand}"
+                                VerticalAlignment="Bottom" Margin="0,0,227,45" Grid.ColumnSpan="2">
+            <Button.Clip>
+                <RectangleGeometry Rect="0,0,89,36" RadiusX="10" RadiusY="10"/>
+            </Button.Clip>
+        </Button>
+
+
+
+    </Grid>
+</Window>

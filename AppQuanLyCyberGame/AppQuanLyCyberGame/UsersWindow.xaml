@@ -46,26 +46,7 @@
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
 
-                        <Grid Grid.Row="0" Margin="5">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto"></ColumnDefinition>
-                                <ColumnDefinition Width="auto"></ColumnDefinition>
-                                <ColumnDefinition Width="auto"></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-
-                            <Grid Grid.Column="0">
-                                <DatePicker VerticalAlignment="Center" HorizontalAlignment="Left" Width="100" materialDesign:HintAssist.Hint="Ngày bắt đầu" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-                            </Grid>
-                            <Grid Grid.Column="1">
-                                <DatePicker VerticalAlignment="Center" HorizontalAlignment="Left" Width="100" materialDesign:HintAssist.Hint="Ngày kết thúc" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-                            </Grid>
-                            <Grid Grid.Column="2">
-                                <Button Style="{StaticResource MaterialDesignRaisedButton}" Margin="5"
-                                            Width="100"
-                                            Content="Lọc"
-                                            ToolTip="Resource name: MaterialDesignRaisedButton"></Button>
-                            </Grid>
-                        </Grid>
+                        
 
                         <Grid Grid.Row="1">
                             <Separator></Separator>
@@ -90,7 +71,6 @@
                                                                     <DataTrigger Binding="{Binding IdRole}" Value="2">
                                                                         <Setter Property="Text" Value="Nhân viên" />
                                                                     </DataTrigger>
-                                                                    
                                                                 </Style.Triggers>
                                                             </Style>
                                                         </TextBlock.Style>

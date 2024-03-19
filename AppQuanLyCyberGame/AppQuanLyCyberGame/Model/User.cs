@@ -17,6 +17,8 @@ namespace AppQuanLyCyberGame.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
+            this.BasicChats = new HashSet<BasicChat>();
+            this.BasicChats1 = new HashSet<BasicChat>();
             this.Bills = new HashSet<Bill>();
         }
     
@@ -31,7 +33,12 @@ namespace AppQuanLyCyberGame.Model
         public Nullable<bool> Userstatus { get; set; }
         public Nullable<double> currentBalance { get; set; }
         public string avatar { get; set; }
+        public Nullable<double> balance { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BasicChat> BasicChats { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BasicChat> BasicChats1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bill> Bills { get; set; }
         public virtual Chat Chat { get; set; }

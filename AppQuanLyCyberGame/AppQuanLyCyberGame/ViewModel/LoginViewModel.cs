@@ -74,8 +74,10 @@ namespace AppQuanLyCyberGame.ViewModel
                 if ( user.IdRole == 3)
                 {
                     var orderWindow = new OrderWindow();
+                    var clientWindow = new ClientWindow();
                     CloseCurrentView();
-                    orderWindow.ShowDialog();
+                    orderWindow.Show();
+                    clientWindow.Show();
                 }
                 else
                 {

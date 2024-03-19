@@ -12,5 +12,6 @@ namespace AppQuanLyCyberGame.ViewModel
 {
     public class ProfileUserViewModel : BaseViewModel
     {
+
     }
 }

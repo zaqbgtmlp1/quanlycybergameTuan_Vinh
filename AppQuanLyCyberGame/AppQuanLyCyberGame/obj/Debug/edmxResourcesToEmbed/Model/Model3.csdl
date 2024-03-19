@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="QuanLyCyberGameModel2" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="QuanLyCyberGameModel4" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="Bill">
     <Key>
       <PropertyRef Name="Id" />
@@ -60,6 +60,8 @@
     <Property Name="Cost" Type="Double" />
     <Property Name="Number" Type="Int32" />
     <Property Name="Itemstatus" Type="Boolean" />
+    <Property Name="ordered" Type="Int32" />
+    <Property Name="imagepath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="BillDetails" Relationship="Self.FK__BillDetai__ItemI__3F466844" FromRole="Item" ToRole="BillDetail" />
   </EntityType>
   <EntityType Name="sysdiagram">
@@ -93,6 +95,9 @@
     <Property Name="Phonenumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
     <Property Name="Useraddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Userstatus" Type="Boolean" />
+    <Property Name="currentBalance" Type="Double" />
+    <Property Name="avatar" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="balance" Type="Double" />
     <NavigationProperty Name="Bills" Relationship="Self.FK__Bill__IdUser__173876EA" FromRole="Users" ToRole="Bill" />
     <NavigationProperty Name="Chat" Relationship="Self.FK__Chat__Id__49C3F6B7" FromRole="Users" ToRole="Chat" />
     <NavigationProperty Name="UserRole" Relationship="Self.FK__Users__IdRole__1273C1CD" FromRole="Users" ToRole="UserRole" />
@@ -169,7 +174,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="QuanLyCyberGameEntities6" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="QuanLyCyberGameEntities2" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Bills" EntityType="Self.Bill" />
     <EntitySet Name="BillDetails" EntityType="Self.BillDetail" />
     <EntitySet Name="Chats" EntityType="Self.Chat" />
