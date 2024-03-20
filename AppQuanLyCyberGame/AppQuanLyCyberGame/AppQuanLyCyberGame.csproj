@@ -129,6 +129,9 @@
     <Compile Include="AddItemView.xaml.cs">
       <DependentUpon>AddItemView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddUserView.xaml.cs">
+      <DependentUpon>AddUserView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BasicChatWindow.xaml.cs">
       <DependentUpon>BasicChatWindow.xaml</DependentUpon>
     </Compile>
@@ -155,25 +158,25 @@
       <DependentUpon>MainUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\BasicChat.cs">
-      <DependentUpon>Model4.tt</DependentUpon>
+      <DependentUpon>Model5.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Bill.cs">
-      <DependentUpon>Model4.tt</DependentUpon>
+      <DependentUpon>Model5.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\BillDetail.cs">
-      <DependentUpon>Model4.tt</DependentUpon>
+      <DependentUpon>Model5.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Chat.cs">
-      <DependentUpon>Model4.tt</DependentUpon>
+      <DependentUpon>Model5.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\ClientComputer.cs">
-      <DependentUpon>Model4.tt</DependentUpon>
+      <DependentUpon>Model5.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\ClientComputerType.cs">
-      <DependentUpon>Model4.tt</DependentUpon>
+      <DependentUpon>Model5.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Item.cs">
-      <DependentUpon>Model4.tt</DependentUpon>
+      <DependentUpon>Model5.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Main Model Final.Context.cs">
       <AutoGen>True</AutoGen>
@@ -265,14 +268,29 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model4.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\Model5.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model5.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model5.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model5.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model5.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Model\sysdiagram.cs">
-      <DependentUpon>Model4.tt</DependentUpon>
+      <DependentUpon>Model5.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\User.cs">
-      <DependentUpon>Model4.tt</DependentUpon>
+      <DependentUpon>Model5.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\UserRole.cs">
-      <DependentUpon>Model4.tt</DependentUpon>
+      <DependentUpon>Model5.tt</DependentUpon>
     </Compile>
     <Compile Include="OrderWindow.xaml.cs">
       <DependentUpon>OrderWindow.xaml</DependentUpon>
@@ -283,16 +301,11 @@
     <Compile Include="StatisticsView.xaml.cs">
       <DependentUpon>StatisticsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="test.xaml.cs">
-      <DependentUpon>test.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="testChat.xaml.cs">
-      <DependentUpon>testChat.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UsersWindow.xaml.cs">
       <DependentUpon>UsersWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\AddItemViewModel.cs" />
+    <Compile Include="ViewModel\AddUserViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\BasicChatViewModel.cs" />
     <Compile Include="ViewModel\ChatViewModel.cs" />
@@ -309,10 +322,11 @@
     <Compile Include="ViewModel\UserAccount.cs" />
     <Compile Include="ViewModel\UserControlViewModel.cs" />
     <Compile Include="ViewModel\UsersViewModel.cs" />
-    <Compile Include="Window1.xaml.cs">
-      <DependentUpon>Window1.xaml</DependentUpon>
-    </Compile>
     <Page Include="AddItemView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddUserView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -376,19 +390,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="test.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="testChat.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="UsersWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Window1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -457,6 +459,13 @@
     </EntityDeploy>
     <None Include="Model\Model4.edmx.diagram">
       <DependentUpon>Model4.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="Model\Model5.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model5.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\Model5.edmx.diagram">
+      <DependentUpon>Model5.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -535,6 +544,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model4.edmx</DependentUpon>
       <LastGenOutput>Model4.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\Model5.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model5.edmx</DependentUpon>
+      <LastGenOutput>Model5.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\Model5.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model5.edmx</DependentUpon>
+      <LastGenOutput>Model5.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

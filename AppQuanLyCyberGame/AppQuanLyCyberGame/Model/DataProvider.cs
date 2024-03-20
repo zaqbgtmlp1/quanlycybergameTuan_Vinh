@@ -27,13 +27,17 @@ namespace AppQuanLyCyberGame.Model
             }
         }
 
-        public QuanLyCyberGameEntities4 DB { get; set; }
+        public QuanLyCyberGameEntities5 DB { get; set; }
 
         private DataProvider()
         {
-            DB = new QuanLyCyberGameEntities4();
+            DB = new QuanLyCyberGameEntities5();
         }
 
+        private void RefreshDBConnection()
+        {
+            DB = new QuanLyCyberGameEntities5();
+        }
 
         public List<User> GetUsers()
         {
@@ -46,7 +50,7 @@ namespace AppQuanLyCyberGame.Model
             catch (Exception ex)
             {
                 Debug.WriteLine($"Error retrieving users: {ex.Message}");
-                return new List<User>(); 
+                return new List<User>();
             }
         }
 
@@ -76,7 +80,7 @@ namespace AppQuanLyCyberGame.Model
             catch (Exception ex)
             {
                 Debug.WriteLine($"Error retrieving users: {ex.Message}");
-                return new List<ClientComputer>(); 
+                return new List<ClientComputer>();
             }
         }
 
@@ -119,12 +123,12 @@ namespace AppQuanLyCyberGame.Model
 
                 if (itemToUpdate != null)
                 {
-                 
+
                     itemToUpdate.DisplayName = newDisplayName;
                     itemToUpdate.Cost = newCost;
                     itemToUpdate.Number = newNumber;
                     itemToUpdate.imagepath = imagepath;
-                 
+
                     DB.SaveChanges();
 
                     Debug.WriteLine($"Item with ID {itemId} updated successfully.");
@@ -151,15 +155,15 @@ namespace AppQuanLyCyberGame.Model
                 var itemToUpdate = GetItemById(itemId);
 
                 if (itemToUpdate != null)
-                {   
+                {
                     if (itemToUpdate.Itemstatus == true)
-                   
+
                         itemToUpdate.Itemstatus = false;
-                    
+
                     else
                         itemToUpdate.Itemstatus = true;
 
-                   
+
                     DB.SaveChanges();
 
                     Debug.WriteLine($"Item with ID {itemId} updated successfully.");
@@ -183,7 +187,7 @@ namespace AppQuanLyCyberGame.Model
         {
             try
             {
-               
+
                 if (string.IsNullOrEmpty(displayName) || cost == null || number == null)
                 {
                     Debug.WriteLine("Invalid information for adding item.");
@@ -196,11 +200,11 @@ namespace AppQuanLyCyberGame.Model
                     DisplayName = displayName,
                     Cost = cost,
                     Number = number,
-                    Itemstatus = false, 
+                    Itemstatus = false,
                     imagepath = img
                 };
 
-           
+
                 DB.Items.Add(newItem);
                 DB.SaveChanges();
 
@@ -215,12 +219,48 @@ namespace AppQuanLyCyberGame.Model
         }
 
 
+        public bool AddUser(User user)
+        {
+            try
+            {
+
+
+
+                // Tạo đối tượng Item mới
+                var newUser = new User
+                {
+                    DisplayName = user.DisplayName,
+                    UserName = user.UserName,
+                    Password = user.Password,
+                    IdRole = 3,
+                    CCCD = user.CCCD,
+                    Phonenumber = user.Phonenumber,
+                    Useraddress = user.Useraddress,
+                    Userstatus = true,
+                    avatar = user.avatar
+                };
+
+
+                DB.Users.Add(newUser);
+                DB.SaveChanges();
+
+                Debug.WriteLine($"Item '{user.DisplayName}' added successfully.");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error adding item: {ex.Message}");
+                return false;
+            }
+        }
+
 
 
         public User GetUserById(int Id)
         {
             try
             {
+               
                 var user = DB.Users.FirstOrDefault(i => i.Id == Id);
                 return user;
             }
@@ -230,25 +270,25 @@ namespace AppQuanLyCyberGame.Model
                 return null;
             }
         }
-        public bool OrderItem(double total, int iduser, string status)
+        public int OrderItem(double total, int iduser, string status)
         {
-         
-                // Tạo đối tượng Item mới
-                var newOrder = new Bill
-                {
-                    Total = total,
-                    IdUser = iduser,
-                    BillStatus = status,
-                    orderat = DateTime.Now
-                };
 
-                // Thêm vào cơ sở dữ liệu và lưu thay đổi
-                DB.Bills.Add(newOrder);
-                DB.SaveChanges();
-                
+            // Tạo đối tượng Item mới
+            var newOrder = new Bill
+            {
+                Total = total,
+                IdUser = iduser,
+                BillStatus = status,
+                orderat = DateTime.Now
+            };
 
-            return true;
-            
+            // Thêm vào cơ sở dữ liệu và lưu thay đổi
+            DB.Bills.Add(newOrder);
+            DB.SaveChanges();
+
+
+            return newOrder.Id;
+
         }
 
 
@@ -317,7 +357,14 @@ namespace AppQuanLyCyberGame.Model
                 {
                     if (CheckPass(username, password) == true)
                     {
+
                         var user = DB.Users.FirstOrDefault(i => i.UserName == username);
+
+                        if (user.balance <= 0)
+                        {
+                            return null;
+                        }
+
                         return user;
                     }
                     else
@@ -384,7 +431,11 @@ namespace AppQuanLyCyberGame.Model
         {
             try
             {
-                var userToUpdate = GetUserById(idUser);
+                
+
+                var userToUpdate = GetUserByIdRealTime(idUser);
+
+                
 
                 if (userToUpdate != null)
                 {
@@ -392,7 +443,7 @@ namespace AppQuanLyCyberGame.Model
                     if (typeClient == 1)
                     {
                         userToUpdate.balance = userToUpdate.balance - time * 10000 / 60;
-                    }    
+                    }
                     else if (typeClient == 2)
                     {
                         userToUpdate.balance = userToUpdate.balance - time * 10000 / 60;
@@ -424,26 +475,26 @@ namespace AppQuanLyCyberGame.Model
         {
             try
             {
-                
-                
-                    // Tạo đối tượng Chat mới
-                    var newChat = new Chat
-                    {
-                        UserID = id,
-                        Mess = mess
-                    };
 
-                    // Thêm đối tượng Chat vào DbSet trong context
-                    
-                    DB.Chats.Add(newChat);
 
-                    // Lưu thay đổi vào cơ sở dữ liệu
-                    DB.SaveChanges();
+                // Tạo đối tượng Chat mới
+                var newChat = new Chat
+                {
+                    UserID = id,
+                    Mess = mess
+                };
 
-                    // Thông báo thành công
-                    Console.WriteLine("Chat added successfully.");
-                    return true;
-                
+                // Thêm đối tượng Chat vào DbSet trong context
+
+                DB.Chats.Add(newChat);
+
+                // Lưu thay đổi vào cơ sở dữ liệu
+                DB.SaveChanges();
+
+                // Thông báo thành công
+                Console.WriteLine("Chat added successfully.");
+                return true;
+
             }
             catch (Exception ex)
             {
@@ -491,17 +542,128 @@ namespace AppQuanLyCyberGame.Model
                 DB.BasicChats.Add(newBC);
                 DB.SaveChanges();
 
-              
+
                 return true;
             }
             catch (Exception ex)
             {
-               
+
                 Debug.WriteLine($"Error adding item: {ex.Message}");
                 return false;
             }
         }
 
+
+
+
+        public bool AddBillDetail(int Billid, int ItemId, double? total, int? number)
+        {
+            try
+            {
+
+
+                // Tạo đối tượng Item mới
+                var newBillDetail = new BillDetail
+                {
+                    BillId = Billid,
+                    ItemId = ItemId,
+                    Number = number,
+                    Total = total
+                };
+
+
+                DB.BillDetails.Add(newBillDetail);
+                DB.SaveChanges();
+
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error adding item: {ex.Message}");
+                return false;
+            }
+        }
+
+
+        public bool UpdateBalancebyOrder(int idUser, double? total)
+        {
+            try
+            {
+                var userToUpdate = GetUserById(idUser);
+
+                if (userToUpdate != null)
+                {
+
+
+                    userToUpdate.balance = userToUpdate.balance - total;
+
+
+                    DB.SaveChanges();
+
+                    Debug.WriteLine($"Item with ID {idUser} updated successfully.");
+                    return true;
+                }
+                else
+                {
+                    Debug.WriteLine($"Item with ID {idUser} not found.");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error updating item: {ex.Message}");
+                return false;
+
+
+
+            }
+        }
+
+        public bool DeleteItembyId(int itemId)
+        {
+            try
+            {
+                var itemToDelete = GetItemById(itemId);
+
+                if (itemToDelete != null)
+                {
+
+                    DB.Items.Remove(itemToDelete);
+
+                    DB.SaveChanges();
+
+                    Debug.WriteLine($"Item with ID {itemId} deleted successfully.");
+                    return true;
+                }
+                else
+                {
+                    Debug.WriteLine($"Item with ID {itemId} not found.");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error updating item: {ex.Message}");
+                return false;
+            }
+        }
+
+
+        public User GetUserByIdRealTime(int Id)
+        {
+            try
+            {
+                RefreshDBConnection();
+                var user = DB.Users.FirstOrDefault(i => i.Id == Id);
+                return user;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error retrieving item: {ex.Message}");
+                return null;
+            }
+        }
 
 
     }

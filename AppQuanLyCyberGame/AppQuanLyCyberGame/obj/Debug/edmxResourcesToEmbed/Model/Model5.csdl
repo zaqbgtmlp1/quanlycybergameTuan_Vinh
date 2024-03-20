@@ -1,5 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="QuanLyCyberGameModel2" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="QuanLyCyberGameModel6" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BasicChat">
+    <Key>
+      <PropertyRef Name="message_id" />
+    </Key>
+    <Property Name="message_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sender_id" Type="Int32" />
+    <Property Name="receiver_id" Type="Int32" />
+    <Property Name="message_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="timestamp" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="User" Relationship="Self.FK__BasicChat__recei__70DDC3D8" FromRole="BasicChat" ToRole="Users" />
+    <NavigationProperty Name="User1" Relationship="Self.FK__BasicChat__sende__6FE99F9F" FromRole="BasicChat" ToRole="Users" />
+  </EntityType>
   <EntityType Name="Bill">
     <Key>
       <PropertyRef Name="Id" />
@@ -19,8 +31,8 @@
     </Key>
     <Property Name="BillId" Type="Int32" Nullable="false" />
     <Property Name="ItemId" Type="Int32" Nullable="false" />
-    <Property Name="Numner" Type="Int32" />
     <Property Name="Total" Type="Double" />
+    <Property Name="Number" Type="Double" />
     <NavigationProperty Name="Bill" Relationship="Self.FK__BillDetai__BillI__3E52440B" FromRole="BillDetail" ToRole="Bill" />
     <NavigationProperty Name="Item" Relationship="Self.FK__BillDetai__ItemI__3F466844" FromRole="BillDetail" ToRole="Item" />
   </EntityType>
@@ -60,6 +72,8 @@
     <Property Name="Cost" Type="Double" />
     <Property Name="Number" Type="Int32" />
     <Property Name="Itemstatus" Type="Boolean" />
+    <Property Name="ordered" Type="Int32" />
+    <Property Name="imagepath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="BillDetails" Relationship="Self.FK__BillDetai__ItemI__3F466844" FromRole="Item" ToRole="BillDetail" />
   </EntityType>
   <EntityType Name="sysdiagram">
@@ -93,10 +107,38 @@
     <Property Name="Phonenumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
     <Property Name="Useraddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Userstatus" Type="Boolean" />
+    <Property Name="avatar" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="balance" Type="Double" />
+    <NavigationProperty Name="BasicChats" Relationship="Self.FK__BasicChat__recei__70DDC3D8" FromRole="Users" ToRole="BasicChat" />
+    <NavigationProperty Name="BasicChats1" Relationship="Self.FK__BasicChat__sende__6FE99F9F" FromRole="Users" ToRole="BasicChat" />
     <NavigationProperty Name="Bills" Relationship="Self.FK__Bill__IdUser__173876EA" FromRole="Users" ToRole="Bill" />
     <NavigationProperty Name="Chat" Relationship="Self.FK__Chat__Id__49C3F6B7" FromRole="Users" ToRole="Chat" />
     <NavigationProperty Name="UserRole" Relationship="Self.FK__Users__IdRole__1273C1CD" FromRole="Users" ToRole="UserRole" />
   </EntityType>
+  <Association Name="FK__BasicChat__recei__70DDC3D8">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="BasicChat" Type="Self.BasicChat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BasicChat">
+        <PropertyRef Name="receiver_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BasicChat__sende__6FE99F9F">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="BasicChat" Type="Self.BasicChat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BasicChat">
+        <PropertyRef Name="sender_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__Bill__IdUser__173876EA">
     <End Role="Users" Type="Self.User" Multiplicity="0..1" />
     <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
@@ -169,7 +211,8 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="QuanLyCyberGameEntities8" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="QuanLyCyberGameEntities5" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BasicChats" EntityType="Self.BasicChat" />
     <EntitySet Name="Bills" EntityType="Self.Bill" />
     <EntitySet Name="BillDetails" EntityType="Self.BillDetail" />
     <EntitySet Name="Chats" EntityType="Self.Chat" />
@@ -179,6 +222,14 @@
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
     <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK__BasicChat__recei__70DDC3D8" Association="Self.FK__BasicChat__recei__70DDC3D8">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="BasicChat" EntitySet="BasicChats" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BasicChat__sende__6FE99F9F" Association="Self.FK__BasicChat__sende__6FE99F9F">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="BasicChat" EntitySet="BasicChats" />
+    </AssociationSet>
     <AssociationSet Name="FK__Bill__IdUser__173876EA" Association="Self.FK__Bill__IdUser__173876EA">
       <End Role="Users" EntitySet="Users" />
       <End Role="Bill" EntitySet="Bills" />

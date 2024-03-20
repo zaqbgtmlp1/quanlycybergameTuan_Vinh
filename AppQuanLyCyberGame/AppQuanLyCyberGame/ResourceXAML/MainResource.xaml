@@ -14,5 +14,6 @@
     <viewmodel:ChatViewModel x:Key="CVM"></viewmodel:ChatViewModel>
     <viewmodel:ClientViewModel x:Key="ClientVM"></viewmodel:ClientViewModel>
     <viewmodel:BasicChatViewModel x:Key="BCVM"></viewmodel:BasicChatViewModel>
+    <viewmodel:AddUserViewModel x:Key="AUVM"></viewmodel:AddUserViewModel>
     
 </ResourceDictionary>

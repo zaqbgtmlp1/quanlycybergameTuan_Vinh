@@ -92,7 +92,7 @@
                         <Button Content="Lưu" Width="90" Height="36" Background="#478C10"
                             HorizontalAlignment="Right" 
                                 Command="{Binding UpdateCommand}"
-                                VerticalAlignment="Bottom" Margin="0,0,212,60">
+                                VerticalAlignment="Bottom" Margin="0,0,305,60">
 
                             <Button.Clip>
                                 <RectangleGeometry Rect="0,0,89,36" RadiusX="10" RadiusY="10"/>
@@ -103,6 +103,15 @@
                         <Button Content="Tạm Ẩn" Width="89" Height="36" Background="#9D9999"
                              HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,80,60"
                                 Command="{Binding HideCommand}">
+                            <Button.Clip>
+                                <RectangleGeometry Rect="0,0,89,36" RadiusX="10" RadiusY="10"/>
+                            </Button.Clip>
+                        </Button>
+
+
+                        <Button Content="Xóa" Width="89" Height="36" Background="#FF5733"
+                             HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,192,60"
+                                Command="{Binding DeleteCommand}">
                             <Button.Clip>
                                 <RectangleGeometry Rect="0,0,89,36" RadiusX="10" RadiusY="10"/>
                             </Button.Clip>

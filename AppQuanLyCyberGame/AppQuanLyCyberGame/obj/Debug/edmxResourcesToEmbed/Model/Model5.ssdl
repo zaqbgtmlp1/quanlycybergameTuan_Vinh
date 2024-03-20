@@ -1,5 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="QuanLyCyberGameModel2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="QuanLyCyberGameModel6.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BasicChat">
+    <Key>
+      <PropertyRef Name="message_id" />
+    </Key>
+    <Property Name="message_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sender_id" Type="int" />
+    <Property Name="receiver_id" Type="int" />
+    <Property Name="message_text" Type="nvarchar(max)" />
+    <Property Name="timestamp" Type="datetime" />
+  </EntityType>
   <EntityType Name="Bill">
     <Key>
       <PropertyRef Name="Id" />
@@ -17,8 +27,8 @@
     </Key>
     <Property Name="BillId" Type="int" Nullable="false" />
     <Property Name="ItemId" Type="int" Nullable="false" />
-    <Property Name="Numner" Type="int" />
     <Property Name="Total" Type="float" />
+    <Property Name="Number" Type="float" />
   </EntityType>
   <EntityType Name="Chat">
     <Key>
@@ -53,6 +63,8 @@
     <Property Name="Cost" Type="float" />
     <Property Name="Number" Type="int" />
     <Property Name="Itemstatus" Type="bit" />
+    <Property Name="ordered" Type="int" />
+    <Property Name="imagepath" Type="varchar" MaxLength="500" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -84,7 +96,33 @@
     <Property Name="Phonenumber" Type="nvarchar" MaxLength="10" />
     <Property Name="Useraddress" Type="nvarchar(max)" />
     <Property Name="Userstatus" Type="bit" />
+    <Property Name="avatar" Type="varchar" MaxLength="500" />
+    <Property Name="balance" Type="float" />
   </EntityType>
+  <Association Name="FK__BasicChat__recei__70DDC3D8">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="BasicChat" Type="Self.BasicChat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BasicChat">
+        <PropertyRef Name="receiver_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BasicChat__sende__6FE99F9F">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="BasicChat" Type="Self.BasicChat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BasicChat">
+        <PropertyRef Name="sender_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__Bill__IdUser__173876EA">
     <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
     <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
@@ -157,7 +195,8 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="QuanLyCyberGameModel2StoreContainer">
+  <EntityContainer Name="QuanLyCyberGameModel6StoreContainer">
+    <EntitySet Name="BasicChat" EntityType="Self.BasicChat" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Bill" EntityType="Self.Bill" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BillDetail" EntityType="Self.BillDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Chat" EntityType="Self.Chat" Schema="dbo" store:Type="Tables" />
@@ -167,6 +206,14 @@
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__BasicChat__recei__70DDC3D8" Association="Self.FK__BasicChat__recei__70DDC3D8">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="BasicChat" EntitySet="BasicChat" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BasicChat__sende__6FE99F9F" Association="Self.FK__BasicChat__sende__6FE99F9F">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="BasicChat" EntitySet="BasicChat" />
+    </AssociationSet>
     <AssociationSet Name="FK__Bill__IdUser__173876EA" Association="Self.FK__Bill__IdUser__173876EA">
       <End Role="Users" EntitySet="Users" />
       <End Role="Bill" EntitySet="Bill" />

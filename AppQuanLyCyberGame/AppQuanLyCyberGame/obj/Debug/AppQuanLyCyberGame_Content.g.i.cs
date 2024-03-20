@@ -22,5 +22,7 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/model3.tt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/model4.context.tt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/model4.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/model5.context.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/model5.tt")]
 
 

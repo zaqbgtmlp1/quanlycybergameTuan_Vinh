@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         DataContext="{StaticResource ClientVM}"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="MAY !" Height="450" Width="250">
+        Title="MAY !" Height="480" Width="250">
     <Grid Margin="0,0,-205,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="95*"/>
@@ -30,7 +30,7 @@
             <materialDesign:PackIcon Kind="Cash" Height="25" Width="25" Margin="0,63,0,-63"/>
 
             <TextBlock Text="Tài khoản" HorizontalAlignment="Center" Margin="39,33,107,-49" FontSize="16"/>
-            <TextBox x:Name="txbCCCD" MaxLength="12" Margin="30,60,0,-60" materialDesign:HintAssist.Hint="Nhập CCCD"
+            <TextBox x:Name="txbCCCD" MaxLength="12" Margin="30,60,0,-60" 
                                      Text="{Binding SelectedUser.balance, Mode=TwoWay}"
                                      />
         </Grid>
@@ -81,14 +81,7 @@
             </Button.Clip>
         </Button>
 
-        <Button Content="Chatbot" Width="90" Height="36" Background="#478C10"
-                            HorizontalAlignment="Right" 
-                                Command="{Binding ChatbotCommand}"
-                                VerticalAlignment="Bottom" Margin="0,0,227,45" Grid.ColumnSpan="2">
-            <Button.Clip>
-                <RectangleGeometry Rect="0,0,89,36" RadiusX="10" RadiusY="10"/>
-            </Button.Clip>
-        </Button>
+        
 
 
 

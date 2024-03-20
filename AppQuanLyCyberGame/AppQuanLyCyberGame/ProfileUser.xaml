@@ -59,21 +59,9 @@
                             <TextBox x:Name="txbDiaChi" Margin="30 0 0 0" materialDesign:HintAssist.Hint="Nhập địa chỉ"/>
                         </Grid>
 
-                        <Grid Height="25" Width="213" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="65 27 0 0">
-                            <materialDesign:PackIcon Kind="Earth" Height="25" Width="25"/>
-                            <TextBox x:Name="txbQuocTich" Margin="30 0 0 0" materialDesign:HintAssist.Hint="Nhập quốc tịch"/>
-                        </Grid>
+                        
 
-                        <Grid Height="25" Width="213" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="65 27 0 0">
-                            <materialDesign:PackIcon Kind="GenderTransgender" Height="25" Width="25"/>
-                            <ComboBox x:Name="cbGioiTinh" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="30 0 0 0"
-                                    Style="{StaticResource MaterialDesignOutlinedComboBox}"
-                                    materialDesign:HintAssist.Hint="Giới tính"
-                                    Height="25" Padding="5" Width="180">
-                                <ComboBoxItem Content="Nam" />
-                                <ComboBoxItem Content="Nữ" />
-                            </ComboBox>
-                        </Grid>
+                        
                     </StackPanel>
 
                     <Grid  Grid.Column="1">
@@ -120,6 +108,17 @@
                     </Grid>
 
                 </Grid>
+
+                <Button Width="90" Height="36" Background="#478C10" Content="Chat"
+                        HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,359,60" 
+                        Command="{Binding ChatCommand}"
+                        >
+                    <Button.Clip>
+                        <RectangleGeometry Rect="0,0,89,36" RadiusX="10" RadiusY="10"/>
+                    </Button.Clip>
+                </Button>
+
+
                 <Button Width="90" Height="36" Background="#478C10" Content="Lưu"
                         HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,212,60" 
                         Command="{Binding UpdateCommand}"

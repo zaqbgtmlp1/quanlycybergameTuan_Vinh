@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
@@ -26,6 +27,9 @@ namespace AppQuanLyCyberGame.ViewModel
         {
             _timer = new DispatcherTimer(TimeSpan.FromSeconds(1), DispatcherPriority.Normal, TimerTick, Dispatcher.CurrentDispatcher);
             _timer.Start(); // Bắt đầu đồng hồ khi ViewModel được khởi tạo
+            
+            
+            
             SelectedUser = UserAccount.Instance.LoggedInUser;
 
 
@@ -36,6 +40,8 @@ namespace AppQuanLyCyberGame.ViewModel
 
 
             FormattedTime = $"{hours:00}:{minutes:00}";
+
+            
 
         }
 
@@ -48,8 +54,14 @@ namespace AppQuanLyCyberGame.ViewModel
             if (_minuteCounter >= 60)
             {
                 _minuteCounter = 0;
+               
+                
                 updatebalance();
+
+                SelectedUser = DataProvider.Ins.GetUserById(2);
                 OnPropertyChanged(nameof(SelectedUser));
+
+              
 
                 _remainingTime = Convert.ToInt32((UserAccount.Instance.LoggedInUser.balance / 10000) * 60);
                 int hours = _remainingTime / 60;
@@ -82,6 +94,7 @@ namespace AppQuanLyCyberGame.ViewModel
         }
 
         private void updatebalance()
+
         {
             DataProvider.Ins.UpdateBalance(UserAccount.Instance.LoggedInUser.Id, 1, 1);
         }
@@ -157,12 +170,36 @@ namespace AppQuanLyCyberGame.ViewModel
 
         // Thêm các thuộc tính và logic khác tại đây
 
+        private Process _browserProcess;
         private void ChargeMoney()
         {
-            MessageBox.Show("OK");
-            Process.Start("http://localhost:8000");
+            try
+            {
+                _browserProcess = Process.Start("http://localhost:8000");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi mở trình duyệt web: " + ex.Message);
+            }
+        }
 
+        private void CheckBrowserStatus()
+        {
+            Task.Run(() =>
+            {
+                while (_browserProcess != null && !_browserProcess.HasExited)
+                {
+                    Thread.Sleep(1000); // Chờ 1 giây trước khi kiểm tra lại
 
+                    if (_browserProcess.HasExited)
+                    {
+                        Application.Current.Dispatcher.Invoke(() =>
+                        {
+                            MessageBox.Show("Trình duyệt web đã đóng.");
+                        });
+                    }
+                }
+            });
         }
 
 
@@ -187,7 +224,7 @@ namespace AppQuanLyCyberGame.ViewModel
 
         private void Chat()
         {
-            MessageBox.Show("OK");
+            
             var chatWindow = new BasicChatWindow();
 
             chatWindow.Show();

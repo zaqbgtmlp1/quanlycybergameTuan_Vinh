@@ -38,8 +38,6 @@ F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\obj\Debug\ProfileUser.g.cs
 F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\obj\Debug\ProfileUser.baml
 F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\obj\Debug\UsersWindow.g.cs
 F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\obj\Debug\UsersWindow.baml
-F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\obj\Debug\Window1.g.cs
-F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\obj\Debug\Window1.baml
 F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\obj\Debug\ItemDetailView.g.cs
 F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\obj\Debug\ItemDetailView.baml
 F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\obj\Debug\StatisticsView.g.cs
@@ -58,8 +56,6 @@ F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\obj\Debug\AddItemView.g.cs
 F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\obj\Debug\AddItemView.baml
 F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\obj\Debug\OrderWindow.g.cs
 F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\obj\Debug\OrderWindow.baml
-F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\obj\Debug\test.g.cs
-F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\obj\Debug\test.baml
 F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\bin\Debug\Python.Runtime.dll
 F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\bin\Debug\onnxruntime.dll
 F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\bin\Debug\Microsoft.ML.OnnxRuntime.dll
@@ -94,5 +90,5 @@ F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\obj\Debug\ClientWindow.g.cs
 F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\obj\Debug\ClientWindow.baml
 F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\obj\Debug\BasicChatWindow.g.cs
 F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\obj\Debug\BasicChatWindow.baml
-F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\obj\Debug\testChat.baml
-F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\obj\Debug\testChat.g.cs
+F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\obj\Debug\AddUserView.g.cs
+F:\DA2\VS2019\AppQuanLyCyberGame\AppQuanLyCyberGame\obj\Debug\AddUserView.baml

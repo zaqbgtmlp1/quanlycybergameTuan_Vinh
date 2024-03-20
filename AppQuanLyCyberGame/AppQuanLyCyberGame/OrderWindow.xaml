@@ -123,20 +123,6 @@
 
 
                 </ScrollViewer>
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-
                 <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
 
                     <!-- Hiển thị danh sách sản phẩm -->
@@ -149,28 +135,44 @@
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Border BorderBrush="Black" BorderThickness="1" Margin="5" Padding="5" Width="180" Height="180" MouseEnter="OnMouseEnter" MouseLeave="OnMouseLeave" Background="White">
-
                                     <StackPanel>
                                         <Image Source="{Binding imagepath}" Width="100" Height="100" />
+                                        <Grid HorizontalAlignment="Left">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <!-- Dòng cho DisplayName -->
+                                                <RowDefinition Height="Auto" />
+                                                <!-- Dòng cho Cost -->
+                                                <RowDefinition Height="Auto" />
+                                                <!-- Dòng cho Buttons -->
+                                            </Grid.RowDefinitions>
 
-                                        <Grid Grid.Row="1" >
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto" />
-                                                <!-- Cột cho TextBlock -->
-                                                <ColumnDefinition Width="Auto" />
-                                                <!-- Cột cho Button -->
-                                            </Grid.ColumnDefinitions>
+                                            <!-- Dòng 1: DisplayName -->
+                                            <TextBlock Grid.Row="0" Text="{Binding DisplayName}" Margin="5,0,0,0" FontWeight="Bold" TextWrapping="Wrap"  MaxWidth="100" />
 
-                                            <!-- Cột 1: TextBlock -->
-                                            <StackPanel Grid.Column="0" Width="100">
-                                                <TextBlock Text="{Binding DisplayName}" Margin="5,0,0,0" FontWeight="Bold" TextWrapping="Wrap"  MaxWidth="100" />
-                                                <TextBlock Text="{Binding Cost, StringFormat='Price: {0:C0}', ConverterCulture='vi-VN'}" Margin="5,0,0,0" />
-                                                <TextBlock Text="{Binding Number}" Margin="5,0,0,0" TextWrapping="Wrap"  MaxWidth="100" />
+                                            <!-- Dòng 2: Cost -->
+                                            <TextBlock Grid.Row="1" Text="{Binding Cost, StringFormat='Price: {0:C0}', ConverterCulture='vi-VN'}" Margin="5,0,0,0" />
+
+                                            <!-- Dòng 3: Buttons -->
+                                            <StackPanel Grid.Row="2" Orientation="Horizontal">
+                                                <!-- Button (-) -->
+                                                <Button x:Name="DecreaseButton" Width="20" Height="20" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+        Style="{StaticResource MaterialDesignIconForegroundButton}" ToolTip="Decrease" >
+                                                    <materialDesign:PackIcon Kind="Minus" />
+                                                </Button>
+
+                                                <!-- TextBlock (Number) -->
+                                                <TextBox Text="{Binding Number, Mode=TwoWay}" Margin="5,0,5,0" />
+
+                                                <!-- Button (+) -->
+                                                <Button x:Name="IncreaseButton" Width="20" Height="20" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+        Style="{StaticResource MaterialDesignIconForegroundButton}" ToolTip="Increase" >
+                                                    <materialDesign:PackIcon Kind="Plus" />
+                                                </Button>
                                             </StackPanel>
-
-                                            <!-- Cột 2: Button -->
                                         </Grid>
                                     </StackPanel>
+                                    
                                 </Border>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>

@@ -16,8 +16,8 @@ namespace AppQuanLyCyberGame.Model
     {
         public int BillId { get; set; }
         public int ItemId { get; set; }
-        public Nullable<int> Numner { get; set; }
         public Nullable<double> Total { get; set; }
+        public Nullable<double> Number { get; set; }
     
         public virtual Bill Bill { get; set; }
         public virtual Item Item { get; set; }

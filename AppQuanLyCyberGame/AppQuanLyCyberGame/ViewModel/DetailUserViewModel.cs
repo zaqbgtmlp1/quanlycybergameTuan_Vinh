@@ -114,5 +114,35 @@ namespace AppQuanLyCyberGame.ViewModel
         }
 
 
+        private RelayCommand<object> _chatCommand;
+        public ICommand ChatCommand
+        {
+            get
+            {
+                if (_chatCommand == null)
+                {
+                    _chatCommand = new RelayCommand<object>(
+                        p => true, // Bạn có thể thay đổi điều kiện kiểm tra có thể thực hiện lệnh hay không
+                        p => Chat()
+                    ); ;
+
+                }
+                return _chatCommand;
+            }
+        }
+
+        // Thêm các thuộc tính và logic khác tại đây
+
+        private void Chat()
+        {
+            MessageBox.Show("OK");
+            var chatWindow = new BasicChatWindow();
+
+            chatWindow.Show();
+
+
+        }
+
+
     }
 }

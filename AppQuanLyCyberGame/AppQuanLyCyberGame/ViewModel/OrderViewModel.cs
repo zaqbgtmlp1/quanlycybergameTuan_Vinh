@@ -124,49 +124,70 @@ namespace AppQuanLyCyberGame.ViewModel
                 Item exitem = CartItems.FirstOrDefault(u => u.Id == item.Id);
                 if (exitem != null)
                 {
-                    // Mục đã tồn tại trong CartItems, cập nhật tên của nó
-                    exitem.Number++;
-
+                    
                 }
                 else
                 {
-                    // Mục không tồn tại trong CartItems, thêm mới vào
-                    CartItems.Add(item);
+                    Item newItem = new Item
+                    {
+                        Id = item.Id,
+                        DisplayName = item.DisplayName,
+                        Cost = item.Cost,
+                        imagepath= item.imagepath,
+                        Number = 1 
+                    };
+
+                    newItem.Number = 1;
+
+                   
+
+                    CartItems.Add(newItem);
                     string[] resultArray = null;
-                    Task.Run(async () =>
+                    try
                     {
-                        string jsonResult = await CallFlaskServerAsync1(item.DisplayName);
-                        if (!string.IsNullOrEmpty(jsonResult))
+                        Task.Run(async () =>
                         {
-                            // Chuyển đổi chuỗi JSON thành mảng chuỗi
-                            resultArray = JsonConvert.DeserializeObject<string[]>(jsonResult);
+                            string jsonResult = await CallFlaskServerAsync1(item.DisplayName);
+                            if (!string.IsNullOrEmpty(jsonResult))
+                            {
+                                // Chuyển đổi chuỗi JSON thành mảng chuỗi
+                                resultArray = JsonConvert.DeserializeObject<string[]>(jsonResult);
 
-                            // Tạo chuỗi từ mảng chuỗi
-                            string resultString = string.Join(", ", resultArray);
+                                // Tạo chuỗi từ mảng chuỗi
+                                string resultString = string.Join(", ", resultArray);
 
-                            // Hiển thị chuỗi trong MessageBox       
-                        }
-                        else
-                        {
-                            MessageBox.Show("Empty response from server");
-                        }
-                    }).Wait();
-
-                    foreach (var itemname in resultArray)
+                                // Hiển thị chuỗi trong MessageBox       
+                            }
+                            else
+                            {
+                                MessageBox.Show("Lỗi");
+                            }
+                        }).Wait();
+                    }
+                    catch
                     {
-                        // Hiển thị từng thành phần trong mảng
-                        Item rItem = DataProvider.Ins.GetItemByName(itemname);
-
-                        if (rItem != null)
+                        // Xử lý lỗi khi không thể truy cập vào server
+                        MessageBox.Show("Đây là sản phẩm mới nên hệ thống chưa thể đưa ra gợi ý hoặc do lỗi kết nối đến máy chủ");
+                    }
+                    if (resultArray!= null)
+                    {
+                        foreach (var itemname in resultArray)
                         {
+                            // Hiển thị từng thành phần trong mảng
+                            Item rItem = DataProvider.Ins.GetItemByName(itemname);
 
-                            RecommendItems.Add(rItem);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Item is null");
+                            if (rItem != null)
+                            {
+
+                                RecommendItems.Add(rItem);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Item is null");
+                            }
                         }
                     }
+                    
                 }
             }
             else
@@ -207,10 +228,20 @@ namespace AppQuanLyCyberGame.ViewModel
             foreach (var item in CartItems)
             {
                 total = total + item.Cost.GetValueOrDefault()*item.Number.GetValueOrDefault();
-                DataProvider.Ins.UpdateNumItem(item.Id, 1, 1);
+                DataProvider.Ins.UpdateNumItem(item.Id, item.Number, item.Number);
             }
 
-            DataProvider.Ins.OrderItem(total, UserAccount.Instance.LoggedInUser.Id, "0");
+            int newOrderId = DataProvider.Ins.OrderItem(total, UserAccount.Instance.LoggedInUser.Id, "0");
+            
+
+            DataProvider.Ins.UpdateBalancebyOrder(UserAccount.Instance.LoggedInUser.Id, total);
+
+            foreach (var item in CartItems)
+            {
+                
+                
+                DataProvider.Ins.AddBillDetail(newOrderId, item.Id, item.Cost.GetValueOrDefault() * item.Number.GetValueOrDefault(), item.Number);
+            }
 
             CartItems.Clear();
 
@@ -290,6 +321,7 @@ namespace AppQuanLyCyberGame.ViewModel
 
 
 
+        
 
 
 

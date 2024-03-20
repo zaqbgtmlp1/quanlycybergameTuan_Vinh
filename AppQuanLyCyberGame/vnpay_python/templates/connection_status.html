@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connection Status</title>
+</head>
+<body>
+    <h1>Database Connection Status</h1>
+    {% if connection_status %}
+        <p>The database connection is successful.</p>
+    {% else %}
+        <p>Failed to connect to the database.</p>
+    {% endif %}
+</body>
+</html>

@@ -41,6 +41,35 @@ namespace AppQuanLyCyberGame.ViewModel
 
             Users = new ObservableCollection<User>(UsersFromDatabase);
         }
-        
+
+
+
+        private RelayCommand<object> _addUserCommand;
+
+        public ICommand AddUserCommand
+        {
+            get
+            {
+                if (_addUserCommand == null)
+                {
+                    _addUserCommand = new RelayCommand<object>(
+                        p => true,
+                        p => NavigateToAddUserView()
+                    );
+                }
+                return _addUserCommand;
+            }
+        }
+
+        private void NavigateToAddUserView()
+        {
+            MessageBox.Show("OK");
+
+            var addUserView = new AddUserView();
+
+            addUserView.ShowDialog();
+
+        }
+
     }
 }

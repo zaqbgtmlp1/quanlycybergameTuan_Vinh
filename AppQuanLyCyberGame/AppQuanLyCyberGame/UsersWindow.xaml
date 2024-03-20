@@ -38,7 +38,7 @@
 
 
                 <!--list-->
-                <materialDesign:Card Grid.Row="1" Margin="5" VerticalAlignment="Stretch">
+                <materialDesign:Card Grid.Row="1" Margin="5,5,10,5" VerticalAlignment="Stretch">
                     <Grid >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"></RowDefinition>
@@ -46,13 +46,20 @@
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
 
-                        
+                        <Button Content="Thêm" Width="90" Height="36" Background="#478C10"
+                            HorizontalAlignment="Right" 
+                                Command="{Binding AddUserCommand}"
+                                VerticalAlignment="Bottom" Margin="0,0,10,306" Grid.Row="2">
 
+                            <Button.Clip>
+                                <RectangleGeometry Rect="0,0,89,36" RadiusX="10" RadiusY="10"/>
+                            </Button.Clip>
+                        </Button>
                         <Grid Grid.Row="1">
                             <Separator></Separator>
                         </Grid>
                         <Grid Grid.Row="2">
-                            <ListView ItemsSource="{Binding Users}" SelectionChanged="OnListViewSelectionChanged">
+                            <ListView ItemsSource="{Binding Users}" SelectionChanged="OnListViewSelectionChanged" Margin="0,0,110,0">
                                 <ListView.View>
                                     <GridView >
                                         <GridViewColumn Header="User Id" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
@@ -82,7 +89,7 @@
                                         <GridViewColumn>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    
+
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
@@ -91,7 +98,7 @@
                                 </ListView.View>
                             </ListView>
                         </Grid>
-                        
+
                     </Grid>
                 </materialDesign:Card>
 

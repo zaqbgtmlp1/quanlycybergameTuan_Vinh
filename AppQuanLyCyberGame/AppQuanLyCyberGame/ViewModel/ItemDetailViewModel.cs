@@ -133,6 +133,34 @@ namespace AppQuanLyCyberGame.ViewModel
         }
 
 
+        private RelayCommand<object> _deleteCommand;
+        public ICommand DeleteCommand
+        {
+            get
+            {
+                if (_deleteCommand == null)
+                {
+                    _deleteCommand = new RelayCommand<object>(
+                        p => true, // Bạn có thể thay đổi điều kiện kiểm tra có thể thực hiện lệnh hay không
+                        p => DeleteItem()
+                    ); ;
+
+                }
+                return _deleteCommand;
+            }
+        }
+
+        // Thêm các thuộc tính và logic khác tại đây
+
+        private void DeleteItem()
+        {
+            DataProvider.Ins.DeleteItembyId(SelectedItem.Id);
+
+            
+            MessageBox.Show("Update Thành Công");
+        }
+
+
 
     }
 }
